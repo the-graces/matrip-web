@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Main from "./pages/Main";
+
 import FriendSearch from "./pages/FriendSearch"
 
 
@@ -13,8 +14,10 @@ function App() {
                element={<Main />}
             />
             <Route
+
                path="/friendSearch"
                element={<FriendSearch />}
+
             />
          </Routes>
       </BrowserRouter>
