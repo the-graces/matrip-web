@@ -3,6 +3,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Main from "./pages/Main";
 
 import FriendSearch from "./pages/FriendSearch"
+import ItineraryInfo from "./pages/ItineraryInfo";
+import UserProfile from "./pages/UserProfile"
 
 
 function App() {
@@ -14,10 +16,16 @@ function App() {
                element={<Main />}
             />
             <Route
-
                path="/friendSearch"
                element={<FriendSearch />}
-
+            />
+            <Route
+               path="/itineraryInfo"
+               element={<ItineraryInfo />}
+            />
+            <Route
+               path="/userProfile"
+               element={<UserProfile />}
             />
          </Routes>
       </BrowserRouter>

@@ -8,7 +8,7 @@ import * as iic from './itineraryInfoStyle'
 
 
 
-const ItineraryRegister: React.FC = () => {
+const ItineraryInfo: React.FC = () => {
 
     // 조건부 렌더링으로 등록 / 신청 구현
 
@@ -67,4 +67,4 @@ const ItineraryRegister: React.FC = () => {
   )
 }
 
-export default ItineraryRegister;
+export default ItineraryInfo;
