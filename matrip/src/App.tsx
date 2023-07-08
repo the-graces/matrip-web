@@ -7,31 +7,36 @@ import ItineraryInfo from "./pages/ItineraryInfo";
 import UserProfile from "./pages/UserProfile";
 
 import GlobalFonts from "./styles/fonts";
+import Notice from "./pages/Notice";
 
 function App() {
-   return (
-      <BrowserRouter>
-         <GlobalFonts />
-         <Routes>
-            <Route
-               path="/"
-               element={<Main />}
-            />
-            <Route
-               path="/friendSearch"
-               element={<FriendSearch />}
-            />
-            <Route
-               path="/itineraryInfo"
-               element={<ItineraryInfo />}
-            />
-            <Route
-               path="/userProfile"
-               element={<UserProfile />}
-            />
-         </Routes>
-      </BrowserRouter>
-   );
+  return (
+    <BrowserRouter>
+      <GlobalFonts />
+      <Routes>
+        <Route
+          path="/"
+          element={<Main />}
+        />
+        <Route
+          path="/friendSearch"
+          element={<FriendSearch />}
+        />
+        <Route
+          path="/itineraryInfo"
+          element={<ItineraryInfo />}
+        />
+        <Route
+          path="/userProfile"
+          element={<UserProfile />}
+        />
+        <Route
+          path="/notice"
+          element={<Notice />}
+        />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
