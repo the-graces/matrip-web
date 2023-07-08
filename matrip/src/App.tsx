@@ -2,14 +2,16 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Main from "./pages/Main";
 
-import FriendSearch from "./pages/FriendSearch"
+import FriendSearch from "./pages/FriendSearch";
 import ItineraryInfo from "./pages/ItineraryInfo";
-import UserProfile from "./pages/UserProfile"
+import UserProfile from "./pages/UserProfile";
 
+import GlobalFonts from "./styles/fonts";
 
 function App() {
    return (
       <BrowserRouter>
+         <GlobalFonts />
          <Routes>
             <Route
                path="/"
