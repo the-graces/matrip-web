@@ -14,10 +14,10 @@ function App() {
       <BrowserRouter>
          <GlobalFonts />
          <Routes>
-            <Route
+            {/* <Route
                path="/"
                element={<Main />}
-            />
+            /> */}
             <Route
                path="/friendSearch"
                element={<FriendSearch />}
