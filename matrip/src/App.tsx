@@ -7,7 +7,7 @@ import ItineraryInfo from "./pages/ItineraryInfo";
 import UserProfile from "./pages/UserProfile";
 
 import GlobalFonts from "./styles/fonts";
-import Notice from "./pages/Notice";
+import TripSchedule from "./pages/TripSchedule";
 
 function App() {
   return (
@@ -31,8 +31,8 @@ function App() {
           element={<UserProfile />}
         />
         <Route
-          path="/notice"
-          element={<Notice />}
+          path="/tripSchedule"
+          element={<TripSchedule />}
         />
       </Routes>
     </BrowserRouter>
