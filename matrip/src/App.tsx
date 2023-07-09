@@ -5,6 +5,7 @@ import Main from "./pages/Main";
 import FriendSearch from "./pages/FriendSearch";
 import ItineraryInfo from "./pages/ItineraryInfo";
 import UserProfile from "./pages/UserProfile";
+import MapSearch from "./pages/MapSearch";
 
 import GlobalFonts from "./styles/fonts";
 
@@ -29,6 +30,11 @@ function App() {
                path="/userProfile"
                element={<UserProfile />}
             />
+            <Route
+               path="/mapSearch"
+               element={<MapSearch />}
+            />
+
          </Routes>
       </BrowserRouter>
    );
