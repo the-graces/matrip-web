@@ -1,8 +1,8 @@
 import React from "react";
-import { styled } from "styled-components";
 import { AiFillDelete } from "react-icons/ai";
 import { noticedata } from "../../data/noticedata";
 import * as gs from "../../styles/GlobalStyles";
+import * as ns from "./noticeStyle";
 
 type NoticeType = "accept" | "request" | "companion" | "update";
 
@@ -28,66 +28,46 @@ function Notice() {
   const arrangeToday = `${today.getFullYear()}.${
     today.getMonth() + 1
   }.${today.getDate()}`;
-  // 오늘 알림
-  const noticeToday = noticedata.filter(
-    (notice) => notice.date === arrangeToday
-  );
-  // 지난 알림
-  const noticePast = noticedata.filter(
-    (notice) => notice.date !== arrangeToday
+
+  const { noticeToday, noticePast } = noticedata.reduce(
+    (acc, notice) => {
+      if (notice.date === arrangeToday) {
+        acc.noticeToday.push(notice);
+      } else {
+        acc.noticePast.push(notice);
+      }
+      return acc;
+    },
+    { noticeToday: [] as any, noticePast: [] as any }
   );
 
   return (
     <gs.MainContainer>
       <gs.MainBox>
-        <NoticeBox>
+        <ns.NoticeBox>
           <h3>오늘</h3>
-          {noticeToday.map((notice: any) => (
-            <NoticeMsg key={notice.id}>
+          {noticeToday?.map((notice: any) => (
+            <ns.NoticeMsg key={notice.id}>
               {notice.nick}님이 {getMsg(notice)}
-            </NoticeMsg>
+            </ns.NoticeMsg>
           ))}
-        </NoticeBox>
-        <NoticeBox>
-          <NoticeTitle>
+        </ns.NoticeBox>
+        <ns.NoticeBox>
+          <ns.NoticeTitle>
             <h3>지난 알림</h3>
-            <DeleteBtn>
+            <ns.DeleteBtn>
               <AiFillDelete size="24" />
-            </DeleteBtn>
-          </NoticeTitle>
-          {noticePast.map((notice: any) => (
-            <NoticeMsg key={notice.id}>
+            </ns.DeleteBtn>
+          </ns.NoticeTitle>
+          {noticePast?.map((notice: any) => (
+            <ns.NoticeMsg key={notice.id}>
               {notice.nick}님이 {getMsg(notice)}
-            </NoticeMsg>
+            </ns.NoticeMsg>
           ))}
-        </NoticeBox>
+        </ns.NoticeBox>
       </gs.MainBox>
     </gs.MainContainer>
   );
 }
-
-const NoticeBox = styled.div`
-  width: 100%;
-`;
-
-const NoticeMsg = styled.div`
-  border: solid #000 1px;
-  border-radius: 16px;
-  height: 40px;
-  line-height: 40px;
-  padding: 0 10px;
-  margin-bottom: 10px;
-`;
-
-const NoticeTitle = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const DeleteBtn = styled.button`
-  background: none;
-  border: none;
-  cursor: pointer;
-`;
 
 export default Notice;
