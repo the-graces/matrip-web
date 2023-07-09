@@ -9,6 +9,7 @@ import UserProfile from "./pages/UserProfile";
 import GlobalFonts from "./styles/fonts";
 import TripSchedule from "./pages/TripSchedule";
 import Notice from "./pages/Notice";
+import Dibs from "./pages/Dibs";
 
 function App() {
   return (
@@ -38,6 +39,10 @@ function App() {
         <Route
           path="/notice"
           element={<Notice />}
+        />
+        <Route
+          path="/Dibs"
+          element={<Dibs />}
         />
       </Routes>
     </BrowserRouter>
