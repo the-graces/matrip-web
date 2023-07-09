@@ -7,6 +7,7 @@ import ItineraryInfo from "./pages/ItineraryInfo";
 import UserProfile from "./pages/UserProfile";
 
 import GlobalFonts from "./styles/fonts";
+import TripSchedule from "./pages/TripSchedule";
 
 function App() {
    return (
@@ -28,6 +29,10 @@ function App() {
             <Route
                path="/userProfile"
                element={<UserProfile />}
+            />
+            <Route
+               path="/tripSchedule"
+               element={<TripSchedule />}
             />
          </Routes>
       </BrowserRouter>
