@@ -105,7 +105,7 @@ export const TripSchedulePostButtonR = styled.div`
 
 export const userList = styled.div`
   display: flex;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
   justify-content: space-between;
 `;
 
@@ -127,7 +127,6 @@ export const userListProfileBox = styled(Link)`
   align-items: center;
   color: #000;
   text-decoration: none;
-
 `;
 
 export const userListProfileImgBox = styled.div`

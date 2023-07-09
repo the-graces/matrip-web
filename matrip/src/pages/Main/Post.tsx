@@ -12,10 +12,7 @@ const Post: React.FC = () => {
           <ms.postBox key={post.id}>
             <ms.profileBox to={"/userProfile"}>
               <ms.profileImgBox>
-                <ms.profileImg
-                  src={post.imgurl}
-                  alt="유저 프로필"
-                />
+                <ms.profileImg src={post.imgurl} alt="유저 프로필" />
               </ms.profileImgBox>
               <ms.Nickname>{post.nick}</ms.Nickname>
             </ms.profileBox>
