@@ -45,7 +45,9 @@ function Notice() {
     <gs.MainContainer>
       <gs.MainBox>
         <ns.NoticeBox>
-          <h3>오늘</h3>
+          <ns.NoticeTitleBox>
+            <ns.NoticeTitle>오늘</ns.NoticeTitle>
+          </ns.NoticeTitleBox>
           {noticeToday?.map((notice: any) => (
             <ns.NoticeMsg key={notice.id}>
               {notice.nick}님이 {getMsg(notice)}
@@ -53,12 +55,12 @@ function Notice() {
           ))}
         </ns.NoticeBox>
         <ns.NoticeBox>
-          <ns.NoticeTitle>
-            <h3>지난 알림</h3>
+          <ns.NoticeTitleBox>
+            <ns.NoticeTitle>지난 알림</ns.NoticeTitle>
             <ns.DeleteBtn>
               <AiFillDelete size='24' />
             </ns.DeleteBtn>
-          </ns.NoticeTitle>
+          </ns.NoticeTitleBox>
           {noticePast?.map((notice: any) => (
             <ns.NoticeMsg key={notice.id}>
               {notice.nick}님이 {getMsg(notice)}

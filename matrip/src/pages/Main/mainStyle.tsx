@@ -34,7 +34,6 @@ export const SearchBtn = styled.button`
 
 export const WriteBtn = styled.button`
   background: none;
-  border: solid #000 1px;
   border-radius: 40px;
   height: 40px;
   padding: 0 24px;
@@ -110,7 +109,7 @@ export const postTitle = styled.div`
 
 export const postPeriod = styled.div`
   font-size: 13px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 `;
 
 export const LikeBtn = styled.button`
