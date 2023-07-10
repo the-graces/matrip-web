@@ -5,6 +5,7 @@ import Main from "./pages/Main";
 import FriendSearch from "./pages/FriendSearch";
 import ItineraryInfo from "./pages/ItineraryInfo";
 import UserProfile from "./pages/UserProfile";
+import MapSearch from "./pages/MapSearch";
 
 import GlobalFonts from "./styles/fonts";
 import TripSchedule from "./pages/TripSchedule";
@@ -12,6 +13,7 @@ import Notice from "./pages/Notice";
 import Dibs from "./pages/Dibs";
 
 function App() {
+
   return (
     <BrowserRouter>
       <GlobalFonts />
@@ -44,9 +46,14 @@ function App() {
           path="/Dibs"
           element={<Dibs />}
         />
+        <Route
+          path="/mapSearch"
+          element={<MapSearch />}
+        />
       </Routes>
     </BrowserRouter>
   );
+
 }
 
 export default App;
