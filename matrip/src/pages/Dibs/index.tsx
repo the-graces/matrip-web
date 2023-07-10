@@ -1,8 +1,8 @@
-import React from "react";
-import { GoHeart } from "react-icons/go";
-import * as gs from "../../styles/GlobalStyles";
-import * as ds from "./dibsStyle";
-import { dibsdata } from "../../data/dibsdata";
+import React from 'react';
+import { GoHeart } from 'react-icons/go';
+import * as gs from '../../styles/GlobalStyles';
+import * as ds from './dibsStyle';
+import { dibsdata } from '../../data/dibsdata';
 
 function Dibs() {
   return (
@@ -17,16 +17,13 @@ function Dibs() {
               </ds.Period>
               <ds.ProfileList>
                 <ds.ProfileBox>
-                  <ds.Profile
-                    src={dibs.imgurl}
-                    alt="유저 프로필"
-                  />
+                  <ds.Profile src={dibs.imgurl} alt='유저 프로필' />
                 </ds.ProfileBox>
               </ds.ProfileList>
             </ds.infoBox>
             <div>
               <ds.DibsBtn>
-                <GoHeart size="24" />
+                <GoHeart size='24' />
               </ds.DibsBtn>
             </div>
           </ds.DibsBox>

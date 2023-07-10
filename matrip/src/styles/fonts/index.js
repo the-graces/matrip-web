@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components";
-import Prentendard from "./Pretendard-Regular.woff2";
+import { createGlobalStyle } from 'styled-components';
+import Prentendard from './Pretendard-Regular.woff2';
 
 export default createGlobalStyle`
 @font-face {

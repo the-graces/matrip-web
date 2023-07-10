@@ -1,16 +1,16 @@
-import React from "react";
-import { AiFillDelete } from "react-icons/ai";
-import { noticedata } from "../../data/noticedata";
-import * as gs from "../../styles/GlobalStyles";
-import * as ns from "./noticeStyle";
+import React from 'react';
+import { AiFillDelete } from 'react-icons/ai';
+import { noticedata } from '../../data/noticedata';
+import * as gs from '../../styles/GlobalStyles';
+import * as ns from './noticeStyle';
 
-type NoticeType = "accept" | "request" | "companion" | "update";
+type NoticeType = 'accept' | 'request' | 'companion' | 'update';
 
 const noticeMsgs: Record<NoticeType, string> = {
-  accept: "신청을 수락했습니다!",
-  request: "참가 신청했습니다!",
-  companion: "동행자로 추가했습니다.",
-  update: "여행 정보가 변경되었습니다.",
+  accept: '신청을 수락했습니다!',
+  request: '참가 신청했습니다!',
+  companion: '동행자로 추가했습니다.',
+  update: '여행 정보가 변경되었습니다.'
 };
 
 const getMsg = (notice: { type?: NoticeType }) => {
@@ -19,7 +19,7 @@ const getMsg = (notice: { type?: NoticeType }) => {
   if (msg) {
     return `${msg}`;
   } else {
-    return "";
+    return '';
   }
 };
 
@@ -56,7 +56,7 @@ function Notice() {
           <ns.NoticeTitle>
             <h3>지난 알림</h3>
             <ns.DeleteBtn>
-              <AiFillDelete size="24" />
+              <AiFillDelete size='24' />
             </ns.DeleteBtn>
           </ns.NoticeTitle>
           {noticePast?.map((notice: any) => (
