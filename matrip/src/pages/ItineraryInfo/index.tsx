@@ -1,17 +1,17 @@
 import React from 'react';
-import styled from 'styled-components';
 import { MdOutlineMan4 } from 'react-icons/md';
 import { AiOutlineUserAdd } from 'react-icons/ai';
 import './index.scss';
 
 import * as iic from './itineraryInfoStyle';
+import * as gs from '../../styles/GlobalStyles';
 
 const ItineraryInfo: React.FC = () => {
   // 조건부 렌더링으로 등록 / 신청 구현
 
   return (
-    <>
-      <iic.MainContainer>
+    <gs.MainContainer>
+      <gs.MainBox>
         itineraryInfoPage
         <iic.InfoCtnr>
           <iic.LabelText>기간</iic.LabelText>
@@ -57,8 +57,8 @@ const ItineraryInfo: React.FC = () => {
           </iic.CompanionCtnr>
         </iic.InfoCtnr>
         <iic.RegisterSubmitBtn>등록</iic.RegisterSubmitBtn>
-      </iic.MainContainer>
-    </>
+      </gs.MainBox>
+    </gs.MainContainer>
   );
 };
 
