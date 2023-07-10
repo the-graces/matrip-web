@@ -38,10 +38,3 @@ export const Profile = styled.img`
   object-fit: cover;
   border-radius: 50%;
 `;
-
-export const DibsBtn = styled.button`
-  border: none;
-  background: none;
-  cursor: pointer;
-  padding: 0 10px;
-`;

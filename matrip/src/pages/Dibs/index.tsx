@@ -1,8 +1,8 @@
 import React from 'react';
-import { GoHeart } from 'react-icons/go';
 import * as gs from '../../styles/GlobalStyles';
 import * as ds from './dibsStyle';
 import { dibsdata } from '../../data/dibsdata';
+import DibsBtn from '../../components/DibsBtn';
 
 function Dibs() {
   return (
@@ -22,9 +22,7 @@ function Dibs() {
               </ds.ProfileList>
             </ds.infoBox>
             <div>
-              <ds.DibsBtn>
-                <GoHeart size='24' />
-              </ds.DibsBtn>
+              <DibsBtn />
             </div>
           </ds.DibsBox>
         ))}

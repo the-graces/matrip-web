@@ -4,10 +4,9 @@ import './index.scss';
 import * as iss from './TripScheduleStyle';
 import * as gs from '../../styles/GlobalStyles';
 
-import { fdata } from '../../data/userdata';
 import { postdata } from '../../data/postdata';
 import { AiOutlineHeart } from 'react-icons/ai';
-import UserList from './UserList';
+import Post from '../../components/Post/Post';
 
 const TripSchedule: React.FC = () => {
   const post = postdata[0];
@@ -40,8 +39,9 @@ const TripSchedule: React.FC = () => {
           <iss.TripSchedulePostButtonL>수정</iss.TripSchedulePostButtonL>
           <iss.TripSchedulePostButtonR>삭제</iss.TripSchedulePostButtonR>
         </iss.TripSchedulePostButton>
-
-        <UserList />
+        <iss.userList>
+          <Post />
+        </iss.userList>
       </iss.MainContainer>
     </gs.MainContainer>
   );

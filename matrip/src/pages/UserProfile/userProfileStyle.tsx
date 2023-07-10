@@ -1,17 +1,17 @@
 import { styled } from 'styled-components';
 
-export const MainContainer = styled.div`
-  background-color: #f0f0f0;
-  max-width: 600px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+// export const MainContainer = styled.div`
+//   background-color: #f0f0f0;
+//   max-width: 600px;
+//   width: 90%;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
 
-  @media screen and (min-width: 600px) {
-    width: 600px;
-  }
-`;
+//   @media screen and (min-width: 600px) {
+//     width: 600px;
+//   }
+// `;
 
 export const ImgCtnr = styled.div`
   width: 50%;
