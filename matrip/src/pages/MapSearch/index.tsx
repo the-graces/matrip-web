@@ -10,7 +10,7 @@ const MapSearch = () => {
    */
   const center = { lat: 37.5665, lng: 126.978 };
   const zoom = 13;
-  const markers = [{ lat: 37.5665, lng: 126.978 }];
+  const markers = { lat: 37.5665, lng: 126.978 };
 
   return (
     <gs.MainContainer>
