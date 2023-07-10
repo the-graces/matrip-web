@@ -15,6 +15,7 @@ export const infoBox = styled.div`
 export const Desination = styled.h4`
   margin: 10px 0 0 0;
   font-size: 20px;
+  font-weight: 600;
 `;
 
 export const Period = styled.div`

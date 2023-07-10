@@ -13,9 +13,15 @@ export const NoticeMsg = styled.div`
   margin-bottom: 10px;
 `;
 
-export const NoticeTitle = styled.div`
+export const NoticeTitle = styled.h3`
+  font-size: 20px;
+  font-weight: 600;
+`;
+
+export const NoticeTitleBox = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 10px;
 `;
 
 export const DeleteBtn = styled.button`
