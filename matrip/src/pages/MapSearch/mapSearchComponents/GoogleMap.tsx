@@ -7,7 +7,10 @@ import {
 } from '@react-google-maps/api';
 import { styled } from 'styled-components';
 
+import { performReverseGeocode } from './geocode'
+
 import * as ms from '../mapPageStyle';
+
 
 interface GoogleMapComponentProps {
   zoom: number;
@@ -30,6 +33,8 @@ const GoogleMapComponent: React.FC<GoogleMapComponentProps> = ({
   const [mapCenter, setMapCenter] = useState(center);
   const [searchBox, setSearchBox] = useState<google.maps.places.SearchBox>();
   const [pickedLoction, setPickedLocation] = useState<PickLocationInfo>();
+  const [clickedLocation, setClickedLocation] = useState<google.maps.LatLng>();
+  const [addressAtClickedLocation, setAddressAtClickedLocation] = useState<string>();
 
   console.log(mapCenter);
   console.log(pickedLoction);
@@ -46,7 +51,9 @@ const GoogleMapComponent: React.FC<GoogleMapComponentProps> = ({
   const mapOptions = {
     mapTypeControl: false,
     fullscreenControl: false,
-    streetViewControl: false
+    streetViewControl: false,
+    styles: ms.customStyles
+    
   };
 
   /**
@@ -74,6 +81,17 @@ const GoogleMapComponent: React.FC<GoogleMapComponentProps> = ({
     }
   };
 
+  const onMapRightClick = (e: google.maps.MapMouseEvent) => {
+    const location = e.latLng;
+  
+    // Reverse geocode를 실행하여 주소 가져오기
+    if (location){
+      performReverseGeocode(location, (address) => {
+        console.log(address);
+      });
+    }
+  };
+
   return (
     <>
       <LoadScript
@@ -93,6 +111,7 @@ const GoogleMapComponent: React.FC<GoogleMapComponentProps> = ({
           zoom={zoom}
           center={mapCenter}
           options={mapOptions}
+          onRightClick={onMapRightClick}
         >
           {mapCenter && <Marker key={'selectedPlace'} position={mapCenter} />}
         </GoogleMap>
