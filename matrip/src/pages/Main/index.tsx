@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { HiMapPin, HiMiniMagnifyingGlass } from 'react-icons/hi2';
 import Post from '../../components/Post';
 import * as gs from '../../styles/GlobalStyles';
 import * as ms from './mainStyle';
 
 const Main: React.FC = () => {
+  const [searchInput, setSearchInput] = useState('');
+
+  // 입력값을 가져와서 소문자로변경
+  const getValue = (e: any) => {
+    setSearchInput(e.target.value.toLowerCase());
+  };
+
   return (
     <gs.MainContainer>
       <gs.MainBox>
@@ -12,10 +19,16 @@ const Main: React.FC = () => {
           <ms.SearchWriteBox>
             <ms.SearchBox>
               <ms.SearchInput
-                type='text'
+                type='search'
                 placeholder='검색어를 입력해주세요.'
+                id='searchInput'
+                value={searchInput}
+                onChange={getValue}
               />
-              <ms.SearchBtn>
+              <ms.SearchBtn
+                className='searchIcon'
+                type='button'
+              >
                 <HiMiniMagnifyingGlass size='24' />
               </ms.SearchBtn>
             </ms.SearchBox>
@@ -29,7 +42,7 @@ const Main: React.FC = () => {
           </ms.locationContainer>
         </ms.MainBoxHeader>
         <ms.postContainer>
-          <Post />
+          <Post searchInput={searchInput} />
         </ms.postContainer>
       </gs.MainBox>
     </gs.MainContainer>
