@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   GoogleMap,
   LoadScript,
@@ -15,14 +15,14 @@ interface GoogleMapComponentProps {
   zoom: number;
   center: { lat: number; lng: number };
   // maker는 여러개가 될 수 있음
-  markers: { lat: number; lng: number };
+  // markers: { lat: number; lng: number };
 }
 
 
 const GoogleMapComponent: React.FC<GoogleMapComponentProps> = ({
   zoom,
   center,
-  markers
+  // markers
 }) => {
   const [mapCenter, setMapCenter] = useState(center);
   const [searchBox, setSearchBox] = useState<google.maps.places.SearchBox>();
@@ -30,6 +30,15 @@ const GoogleMapComponent: React.FC<GoogleMapComponentProps> = ({
   //우클릭한 위치에 대한 정보
   const [clickedLocation, setClickedLocation] = useState<google.maps.LatLngLiteral>();
   const [clickedAddress, setClickedAddress] = useState<string>('');
+
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  // 지도 우클릭하면 바뀌는 위치 정보를 검색창에도 반영 
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.value = clickedAddress;
+    }
+  }, [clickedAddress]);
 
 
 
@@ -60,11 +69,14 @@ const GoogleMapComponent: React.FC<GoogleMapComponentProps> = ({
       if (places && places.length === 1) {
         // 위도 경도 값
         const place = places[0].geometry?.location;
-        const placeName = places[0].name;
+        // const placeName = places[0].name;
+        const placeAddress = places[0].formatted_address;
+        console.log(places[0])
 
-        if (place && placeName) {
+        if (place && placeAddress) {
           setMapCenter({ lat: place.lat(), lng: place.lng() });
           setClickedLocation({ lat: place.lat(), lng: place.lng() });
+          setClickedAddress(placeAddress)
         }
       }
     }
@@ -99,7 +111,7 @@ const GoogleMapComponent: React.FC<GoogleMapComponentProps> = ({
         libraries={['places']}
       >
         <StandaloneSearchBox onLoad={onLoad} onPlacesChanged={onPlacesChanged}>
-          <ms.LocationSearchInput type='text' placeholder='Search location' />
+          <ms.LocationSearchInput ref={inputRef} type='text' placeholder='Search location' />
         </StandaloneSearchBox>
         <GoogleMap
           mapContainerStyle={{
@@ -117,12 +129,16 @@ const GoogleMapComponent: React.FC<GoogleMapComponentProps> = ({
             <Marker
               key={clickedLocation.lat + clickedLocation.lng}
               position={{ lat: clickedLocation.lat, lng: clickedLocation.lng }}
-            />}
+              onClick={(e: google.maps.MapMouseEvent) => console.log('cliecked')}
+              icon={ms.markerIcon}
+            />
+          }
         </GoogleMap>
       </LoadScript>
       {clickedAddress &&
         <div>
-          {clickedAddress}
+          <h3>FOR DEV : 지도위에 우클릭하시면 됩니당</h3>
+          <h1>{clickedAddress}</h1>
         </div>
       }
     </>

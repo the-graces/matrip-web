@@ -10,13 +10,17 @@ const MapSearch = () => {
    */
   const center = { lat: 37.5665, lng: 126.978 };
   const zoom = 13;
-  const markers = { lat: 37.5665, lng: 126.978 };
+  // const markers = { lat: 37.5665, lng: 126.978 };
 
   return (
     <gs.MainContainer>
       <gs.MainBox>
         <ms.MapContainer>
-          <GoogleMapComponent center={center} zoom={zoom} markers={markers} />
+          <GoogleMapComponent 
+            center={center} 
+            zoom={zoom}
+            //markers={markers} 
+           />
         </ms.MapContainer>
       </gs.MainBox>
     </gs.MainContainer>
