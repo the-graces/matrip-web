@@ -15,6 +15,7 @@ export const infoBox = styled.div`
 export const Desination = styled.h4`
   margin: 10px 0 0 0;
   font-size: 20px;
+  font-weight: 600;
 `;
 
 export const Period = styled.div`
@@ -36,11 +37,4 @@ export const Profile = styled.img`
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
-`;
-
-export const DibsBtn = styled.button`
-  border: none;
-  background: none;
-  cursor: pointer;
-  padding: 0 10px;
 `;

@@ -1,21 +1,24 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Main from './pages/Main';
 
+import Main from './pages/Main';
 import FriendSearch from './pages/FriendSearch';
 import ItineraryInfo from './pages/ItineraryInfo';
 import UserProfile from './pages/UserProfile';
 import MapSearch from './pages/MapSearch';
-
-import GlobalFonts from './styles/fonts';
 import TripSchedule from './pages/TripSchedule';
 import Notice from './pages/Notice';
 import Dibs from './pages/Dibs';
+
+import GlobalFonts from './styles/fonts';
+import { GlobalStyle } from './styles/GlobalStyles';
+import { lightTheme } from './styles/theme/theme';
 
 function App() {
   return (
     <BrowserRouter>
       <GlobalFonts />
+      <GlobalStyle theme={lightTheme} />
       <Routes>
         <Route path='/' element={<Main />} />
         <Route path='/friendSearch' element={<FriendSearch />} />

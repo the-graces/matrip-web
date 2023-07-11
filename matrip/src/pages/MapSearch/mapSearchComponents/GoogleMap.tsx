@@ -10,7 +10,6 @@ import { performReverseGeocode } from './geocode'
 
 import * as ms from '../mapPageStyle';
 
-// import markerIcon from './mapMarkerStyle';
 
 
 interface GoogleMapComponentProps {
@@ -135,6 +134,7 @@ const GoogleMapComponent: React.FC<GoogleMapComponentProps> = ({
               key={clickedLocation.lat + clickedLocation.lng}
               position={{ lat: clickedLocation.lat, lng: clickedLocation.lng }}
               onClick={(e: google.maps.MapMouseEvent) => console.log('cliecked')}
+
               icon={
                 {url: `data:image/svg+xml;utf-8,${encodeURIComponent(
                   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" fill="red">
@@ -145,6 +145,7 @@ const GoogleMapComponent: React.FC<GoogleMapComponentProps> = ({
                 scaledSize: new google.maps.Size(40, 40),
                 anchor: new google.maps.Point(20, 40),}
               }
+
             />
           }
         </GoogleMap>

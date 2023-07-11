@@ -1,17 +1,5 @@
 import { styled } from 'styled-components';
 
-export const MainContainer = styled.div`
-  max-width: 600px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  @media screen and (min-width: 600px) {
-    width: 600px;
-  }
-`;
-
 export const SearchInput = styled.input`
   width: 90%;
   height: 40px;
