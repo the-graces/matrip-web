@@ -1,6 +1,6 @@
 import React from 'react';
 import { HiMapPin, HiMiniMagnifyingGlass } from 'react-icons/hi2';
-import Post from '../../components/Post/Post';
+import Post from '../../components/Post';
 import * as gs from '../../styles/GlobalStyles';
 import * as ms from './mainStyle';
 

@@ -6,7 +6,7 @@ import * as gs from '../../styles/GlobalStyles';
 
 import { postdata } from '../../data/postdata';
 import { AiOutlineHeart } from 'react-icons/ai';
-import Post from '../../components/Post/Post';
+import Post from '../../components/Post';
 
 const TripSchedule: React.FC = () => {
   const post = postdata[0];
