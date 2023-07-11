@@ -3,11 +3,21 @@ import { postdata } from '../../data/postdata';
 import * as ps from './postStyle';
 import DibsBtn from '../DibsBtn';
 
-const Post: React.FC = () => {
+interface PostProps {
+  searchInput: string;
+}
+
+const Post: React.FC <PostProps> = ({ searchInput }) => {
+  const filteredPostdata = postdata.filter((post: any) =>
+    post.destination.includes(searchInput)
+  );
+
   return (
     <>
-      {postdata.map((post) => {
-        return (
+      {filteredPostdata.length === 0 ? (
+        <p>찾으시는 정보가 없습니다.</p>
+      ) : (
+        filteredPostdata.map((post: any) => (
           <ps.postBox key={post.id}>
             <ps.profileBox to={'/userProfile'}>
               <ps.profileImgBox>
@@ -26,8 +36,8 @@ const Post: React.FC = () => {
               <DibsBtn />
             </div>
           </ps.postBox>
-        );
-      })}
+        ))
+      )}
     </>
   );
 };
