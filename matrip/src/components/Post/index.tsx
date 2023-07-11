@@ -7,7 +7,7 @@ interface PostProps {
   searchInput: string;
 }
 
-const Post: React.FC <PostProps> = ({ searchInput }) => {
+const Post: React.FC<PostProps> = ({ searchInput }) => {
   const filteredPostdata = postdata.filter((post: any) =>
     post.destination.includes(searchInput)
   );
@@ -33,7 +33,7 @@ const Post: React.FC <PostProps> = ({ searchInput }) => {
               <ps.postPeriod>현재 {post.personnel}명</ps.postPeriod>
             </ps.postContent>
             <div>
-              <DibsBtn />
+              <DibsBtn id={post.id} state={post.dibs} />
             </div>
           </ps.postBox>
         ))
