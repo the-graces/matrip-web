@@ -62,7 +62,7 @@ const Post: React.FC<PostProps> = ({ searchInput }) => {
               <ps.postPeriod>현재 {post.personnel}명</ps.postPeriod>
             </ps.postContent>
             <div>
-              <DibsBtn id={post.id} state={post.state} />
+              <DibsBtn id={post.id} state={post.dibs} />
             </div>
           </ps.postBox>
         ))
