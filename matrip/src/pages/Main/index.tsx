@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { HiMapPin, HiMiniMagnifyingGlass } from 'react-icons/hi2';
 import Post from '../../components/Post/Post';
 import * as gs from '../../styles/GlobalStyles';
@@ -18,7 +18,6 @@ const Main: React.FC = () => {
     }
   };
 
-  // 입력값을 가져와서 소문자로변경
   const getValue = (e: any) => {
     setInput(e.target.value.toLowerCase());
   };
