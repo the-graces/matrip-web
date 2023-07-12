@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { postdata } from '../../data/postdata';
 import * as ps from './postStyle';
 import DibsBtn from '../DibsBtn';
@@ -7,7 +7,7 @@ interface PostProps {
   searchInput: string;
 }
 
-const Post: React.FC <PostProps> = ({ searchInput }) => {
+const Post: React.FC<PostProps> = ({ searchInput }) => {
   const filteredPostdata = postdata.filter((post: any) =>
     post.destination.includes(searchInput)
   );
