@@ -52,6 +52,7 @@ const UploadImg: React.FC<CropComponentsProps> = ({sendimg, close}) => {
   const [loading, setLoading] = useState<boolean>(false)
   const previewCanvasRef = useRef<HTMLCanvasElement>(null)
   const imgRef = useRef<HTMLImageElement>(null)
+  const imageInputRef = useRef<HTMLInputElement>(null);
   const hiddenAnchorRef = useRef<HTMLAnchorElement>(null)
   const blobUrlRef = useRef('')
   const [crop, setCrop] = useState<Crop>()
@@ -158,20 +159,19 @@ const UploadImg: React.FC<CropComponentsProps> = ({sendimg, close}) => {
     [completedCrop, SCALE, ROTATE],
   )
 
-  // function handleToggleAspectClick() {
-  //   if (aspect) {
-  //     setAspect(undefined)
-  //   } else if (imgRef.current) {
-  //     const { width, height } = imgRef.current
-  //     setAspect(16 / 9)
-  //     setCrop(centerAspectCrop(width, height, 16 / 9))
-  //   }
-  // }
+  async function onUploadButtonClick() {
+    if (imageInputRef.current) {
+      imageInputRef.current.click();
+    }
+  }
 
   return (
     <uis.EditImageCtnr>
-      <div className="Crop-Controls">
-        <input type="file" accept="image/*" onChange={onSelectFile} />
+      <uis.CropControl>
+      <uis.ImageInput type="file" accept="image/*" onChange={onSelectFile} ref={imageInputRef} hidden />
+        <div  onClick={onUploadButtonClick}>
+          이미지  업로드 버튼
+        </div >
         <AiFillCloseCircle 
           size={30}
           onClick={handleClose}
@@ -204,7 +204,7 @@ const UploadImg: React.FC<CropComponentsProps> = ({sendimg, close}) => {
             Toggle aspect {aspect ? 'off' : 'on'}
           </button>
         </div> */}
-      </div>
+      </uis.CropControl>
       {loading &&
         <LoadingIncdicator />
       }

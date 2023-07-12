@@ -1,6 +1,9 @@
-import React, { useState, MouseEvent, MouseEventHandler} from 'react';
+import React, { useState, MouseEvent, MouseEventHandler, useEffect} from 'react';
+
 import * as upc from './userProfileStyle';
 import * as gs from '../../styles/GlobalStyles';
+
+
 import { fdata } from '../../data/userdata';
 
 import UploadImg from '../../components/UploadImg';
@@ -8,7 +11,8 @@ import { InfoCtnr } from '../ItineraryInfo/itineraryInfoStyle';
 
 import { useIconClickHandler } from '../../hooks/useIconClickHandler';
 
-import {AiFillEdit} from 'react-icons/ai'
+import {AiFillEdit, AiFillCheckCircle} from 'react-icons/ai'
+
 
 interface UserInfo {
   nick: string;
@@ -21,17 +25,39 @@ interface UserInfo {
 
 const UserProfile: React.FC = () => {
   const prf: UserInfo = fdata[0];
-  const [pickedImg, setPickedImg] = useState<string>('')
-
+  
+  const [userInfo, setUserInfo] = useState<UserInfo>(prf);
+  const [isEditable, setIsEditable] =useState<boolean>(true);
+  
+  const [pickedImg, setPickedImg] = useState<string>('');
   const [openCropImage, setOpenCropImage] = useState<boolean>(false);
+
+  console.log(isEditable)
 
   const handleOpenCropImage = useIconClickHandler(() => {
     setOpenCropImage(true)
-  })
+  });
+
+  const handleEditUserInfo = useIconClickHandler(() => {
+    setIsEditable(!isEditable)
+  });
 
   const handleImageUrlFromCrop = (urlFromChild: string) => {
     setPickedImg(urlFromChild);
   };
+
+  const handleInfoChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    fieldName: keyof UserInfo
+  ) => {
+    setUserInfo({...userInfo, [fieldName]: e.target.value})
+  }
+
+  const handleSubmit = () => {
+    console.log('handle submit')
+  }
+
+  
 
   if(!pickedImg){
     setPickedImg(prf.imgurl)
@@ -52,15 +78,38 @@ const UserProfile: React.FC = () => {
         
         <upc.ProfileCard>
         
-          <upc.ImgCtnr>
+          <upc.ImgCtnr $isEditable={isEditable}>
             <upc.Img src={pickedImg} />
+            <AiFillEdit 
+              onClick={handleOpenCropImage}
+              style={{position:'absolute', right:'20px', top:'10px'}}  
+              size={30}
+            />
           </upc.ImgCtnr>
 
-          <upc.InfoCtnr>
+          {/* form */}
+          <upc.InfoCtnr $isEditable={isEditable}>
             <upc.IdCtnr>
-              <upc.IdText>{prf.id}</upc.IdText>
-              <AiFillEdit onClick={handleOpenCropImage}/>
-            </upc.IdCtnr>
+              <upc.IdText
+                type='text'
+                value={ userInfo.id }
+                onChange={(e: any) => handleInfoChange(e,'id')}
+                readOnly={isEditable}
+              ></upc.IdText>
+
+            {isEditable ?
+              <AiFillEdit 
+                onClick={handleEditUserInfo}
+              />
+              :
+              <AiFillCheckCircle 
+                onClick={handleEditUserInfo}
+              />
+            }
+              
+
+
+            </upc.IdCtnr>  
             <upc.EmailCtnr>
               <upc.EmailText>{prf.email}</upc.EmailText>
             </upc.EmailCtnr>
@@ -74,6 +123,12 @@ const UserProfile: React.FC = () => {
             </upc.SexCtnr>
           </upc.InfoCtnr>
 
+        </upc.ProfileCard>
+        <upc.ProfileCard>
+          <div>친구 목록</div>
+          <div>친구 목록</div>
+          <div>친구 목록</div>
+          
         </upc.ProfileCard>
 
       </gs.MainBox>

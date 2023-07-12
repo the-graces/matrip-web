@@ -1,4 +1,6 @@
-import { styled } from 'styled-components';
+import { styled, css } from 'styled-components';
+
+
 
 
 export const ProfileCard = styled.div`
@@ -11,14 +13,19 @@ export const ProfileCard = styled.div`
   align-items: center;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
   margin-top: 15px;
+  margin-bottom: 20px;
 `
 
-export const ImgCtnr = styled.div`
+// 왜 이미지 넓이가 달라짐?????????
+export const ImgCtnr = styled.div<{ $isEditable: boolean }>`
   width: 100%;
   // 높이 넓이와 같게
-  padding-bottom: 100%; 
+  padding-bottom: ${({ $isEditable }) => ($isEditable ? '100%' : '50%')};
+  transition: padding-bottom 0.3s;
   position: relative;
   margin: 0px 0px;
+  overflow: hidden;
+  
 `;
 
 export const Img = styled.img`
@@ -28,19 +35,22 @@ export const Img = styled.img`
   left: 0;
   right: 0;
   bottom: 0;
-  margin: auto;
+  
   width: 100%;
   height: 100%;
   
 `;
 
-export const InfoCtnr = styled.div`
+export const InfoCtnr = styled.div<{ $isEditable: boolean }>`
   display: flex;
   flex-direction: column;
   width: 90%;
   margin-top: 13px;
-  
+  height: ${({ $isEditable }) => ($isEditable ? '150px' : '270px')};
+  transition: height 0.3s;
 `
+
+
 
 export const IdCtnr = styled.div`
   margin: 10px 0px;
@@ -50,7 +60,7 @@ export const IdCtnr = styled.div`
   justify-content: space-between;
 `;
 
-export const IdText = styled.div``;
+export const IdText = styled.input``;
 
 export const EmailCtnr = styled.div`
   margin: 10px 0px;
