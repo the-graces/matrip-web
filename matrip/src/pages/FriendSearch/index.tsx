@@ -10,7 +10,6 @@ const FriendSearch: React.FC = () => {
     data.nick.includes(searchInput)
   );
 
-  // 입력값을 가져와서 소문자로 변환
   const getValue = (e: any) => {
     setSearchInput(e.target.value.toLowerCase());
   };

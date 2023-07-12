@@ -40,7 +40,7 @@ const TripSchedule: React.FC = () => {
           <iss.TripSchedulePostButtonR>삭제</iss.TripSchedulePostButtonR>
         </iss.TripSchedulePostButton>
         <iss.userList>
-          <UserList/>
+          <UserList />
         </iss.userList>
       </iss.MainContainer>
     </gs.MainContainer>

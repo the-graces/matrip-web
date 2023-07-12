@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { postdata } from '../../data/postdata';
 import * as ps from './postStyle';
 import DibsBtn from '../DibsBtn';
@@ -46,33 +46,30 @@ const Post: React.FC<PostProps> = ({ searchInput }) => {
       {filteredPostdata.length === 0 ? (
         <p>찾으시는 정보가 없습니다.</p>
       ) : (
-        <>
-          {filteredPostdata.map((post: any) => (
-            <ps.postBox key={post.id}>
-              <ps.profileBox to={'/userProfile'}>
-                <ps.profileImgBox>
-                  <ps.profileImg src={post.imgurl} alt='유저 프로필' />
-                </ps.profileImgBox>
-                <ps.Nickname>{post.nick}</ps.Nickname>
-              </ps.profileBox>
-              <ps.postContent to={'/itineraryInfo'}>
-                <ps.postTitle>{post.destination}</ps.postTitle>
-                <ps.postPeriod>
-                  {post.startDate}~{post.endData}
-                </ps.postPeriod>
-                <ps.postPeriod>현재 {post.personnel}명</ps.postPeriod>
-              </ps.postContent>
-              <div>
-                <DibsBtn />
-              </div>
-            </ps.postBox>
-          ))}
-          <div
-            style={{ height: '20px', backgroundColor: 'red' }}
-            ref={target}
-          >asd</div>
-        </>
+        filteredPostdata.map((post: any) => (
+          <ps.postBox key={post.id}>
+            <ps.profileBox to={'/userProfile'}>
+              <ps.profileImgBox>
+                <ps.profileImg src={post.imgurl} alt='유저 프로필' />
+              </ps.profileImgBox>
+              <ps.Nickname>{post.nick}</ps.Nickname>
+            </ps.profileBox>
+            <ps.postContent to={'/itineraryInfo'}>
+              <ps.postTitle>{post.destination}</ps.postTitle>
+              <ps.postPeriod>
+                {post.startDate}~{post.endData}
+              </ps.postPeriod>
+              <ps.postPeriod>현재 {post.personnel}명</ps.postPeriod>
+            </ps.postContent>
+            <div>
+              <DibsBtn id={post.id} state={post.state} />
+            </div>
+          </ps.postBox>
+        ))
       )}
+      <div style={{ height: '30px', backgroundColor: 'red' }} ref={target}>
+        target
+      </div>
     </>
   );
 };
