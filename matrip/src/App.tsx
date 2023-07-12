@@ -14,12 +14,14 @@ import NotFound from './pages/NotFound';
 import GlobalFonts from './styles/fonts';
 import { GlobalStyle } from './styles/GlobalStyles';
 import { lightTheme } from './styles/theme/theme';
+import BottomNav from './components/BottomNav';
 
 function App() {
   return (
     <BrowserRouter>
       <GlobalFonts />
       <GlobalStyle theme={lightTheme} />
+      <BottomNav />
       <Routes>
         <Route path='/' element={<Main />} />
         <Route path='/friendSearch' element={<FriendSearch />} />
@@ -29,7 +31,7 @@ function App() {
         <Route path='/notice' element={<Notice />} />
         <Route path='/Dibs' element={<Dibs />} />
         <Route path='/mapSearch' element={<MapSearch />} />
-        <Route path="/*" element={<NotFound />} />
+        <Route path='/*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
