@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { postdata } from '../../data/postdata';
 import * as ps from './postStyle';
 import DibsBtn from '../DibsBtn';
@@ -8,6 +8,35 @@ interface PostProps {
 }
 
 const Post: React.FC<PostProps> = ({ searchInput }) => {
+  const target = useRef(null);
+
+  useEffect(() => {
+    const options = {
+      threshold: 1.0
+    };
+
+    const callback: IntersectionObserverCallback = (entries) => {
+      const target = entries[0].target;
+      if (target instanceof HTMLElement && entries[0].isIntersecting) {
+        // loadMoreData();
+      }
+    };
+
+    const observer = new IntersectionObserver(callback, options);
+
+    const currentTarget = target.current;
+
+    if (target.current) {
+      observer.observe(target.current);
+    }
+
+    return () => {
+      if (currentTarget) {
+        observer.unobserve(currentTarget);
+      }
+    };
+  }, []);
+
   const filteredPostdata = postdata.filter((post: any) =>
     post.destination.includes(searchInput)
   );
@@ -33,11 +62,14 @@ const Post: React.FC<PostProps> = ({ searchInput }) => {
               <ps.postPeriod>현재 {post.personnel}명</ps.postPeriod>
             </ps.postContent>
             <div>
-              <DibsBtn id={post.id} state={post.dibs} />
+              <DibsBtn id={post.id} state={post.state} />
             </div>
           </ps.postBox>
         ))
       )}
+      <div style={{ height: '30px', backgroundColor: 'red' }} ref={target}>
+        target
+      </div>
     </>
   );
 };

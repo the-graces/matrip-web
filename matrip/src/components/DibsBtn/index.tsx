@@ -9,7 +9,7 @@ type StateType = {
   state: boolean;
 };
 
-function DibsBtn({ id, state }: StateType) {
+const DibsBtn: React.FC<StateType> = ({ id, state }) => {
   const dispatch = useAppDispatch();
   const [dibsState, setDibsState] = useState<boolean>(state);
 

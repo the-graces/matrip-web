@@ -6,10 +6,20 @@ import * as ms from './mainStyle';
 
 const Main: React.FC = () => {
   const [searchInput, setSearchInput] = useState('');
+  const [input, setInput] = useState('');
 
-  // 입력값을 가져와서 소문자로변경
+  const handleSearch = () => {
+    setSearchInput(input);
+  };
+
+  const handleKeyPress = (e:any) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
   const getValue = (e: any) => {
-    setSearchInput(e.target.value.toLowerCase());
+    setInput(e.target.value.toLowerCase());
   };
 
   return (
@@ -22,12 +32,14 @@ const Main: React.FC = () => {
                 type='search'
                 placeholder='검색어를 입력해주세요.'
                 id='searchInput'
-                value={searchInput}
+                value={input}
                 onChange={getValue}
+                onKeyDown={handleKeyPress}
               />
               <ms.SearchBtn
                 className='searchIcon'
-                type='button'
+                type='submit'
+                onClick={handleSearch}
               >
                 <HiMiniMagnifyingGlass size='24' />
               </ms.SearchBtn>
