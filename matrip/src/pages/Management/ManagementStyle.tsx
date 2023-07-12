@@ -67,16 +67,64 @@ export const postDibsBtn = styled.div`
   right: 40px;
 `;
 
-export const wantList = styled.div`
-  font-size: 18px;
+export const PostButton = styled.div`
+  width: 100%;
   display: flex;
-  align-items: center;
-  padding: 15px;
-  font-weight: 700;
+  border-radius: 40px;
+  margin: auto;
+  margin-top: 15px;
+  gap: 20px;
+  margin-bottom: 25px;
 `;
 
-export const userList = styled.div`
+export const PostButtonL = styled.div`
+  width: 162px;
+  height: 42px;
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
   justify-content: space-between;
+  background-color: #056676;
+  color: white;
+  border-radius: 16px;
+  justify-content: center;
+`;
+
+export const PostButtonR = styled.div`
+  width: 162px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #5eaaa8;
+  color: white;
+  border-radius: 16px;
+  justify-content: center;
+`;
+
+export const ManagementBtn = styled.div`
+  display: flex;
+`;
+
+export const ManagementBtnL = styled.button`
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #056676;
+  color: white;
+  border-radius: 100%;
+  justify-content: center;
+`;
+
+export const ManagementBtnR = styled.button`
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #000000;
+  color: white;
+  border-radius: 100%;
+  justify-content: center;
 `;

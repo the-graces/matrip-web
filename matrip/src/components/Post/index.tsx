@@ -49,21 +49,25 @@ const Post: React.FC<PostProps> = ({ searchInput }) => {
         filteredPostdata.map((post: any) => (
           <ps.postBox key={post.id}>
             <ps.profileBox to={'/userProfile'}>
+
               <ps.profileImgBox>
                 <ps.profileImg src={post.imgurl} alt='유저 프로필' />
               </ps.profileImgBox>
-              <ps.Nickname>{post.nick}</ps.Nickname>
+
+              {/* <ps.Nickname>{post.nick}</ps.Nickname> */}
             </ps.profileBox>
+
             <ps.postContent to={'/itineraryInfo'}>
+
               <ps.postTitle>{post.destination}</ps.postTitle>
               <ps.postPeriod>
                 {post.startDate}~{post.endData}
               </ps.postPeriod>
               <ps.postPeriod>현재 {post.personnel}명</ps.postPeriod>
             </ps.postContent>
-            <div>
+            <ps.postDibsBtn>
               <DibsBtn id={post.id} state={post.state} />
-            </div>
+            </ps.postDibsBtn>
           </ps.postBox>
         ))
       )}
