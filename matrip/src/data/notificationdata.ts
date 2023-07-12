@@ -1,4 +1,4 @@
-export const noticedata = [
+export const notificationdata = [
   {
     id: 1,
     nick: 'test1',

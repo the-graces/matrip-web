@@ -1,10 +1,10 @@
 import { styled } from 'styled-components';
 
-export const NoticeBox = styled.div`
+export const NotificationBox = styled.div`
   width: 100%;
 `;
 
-export const NoticeMsg = styled.div`
+export const NotificationMsg = styled.div`
   border: solid #000 1px;
   border-radius: 16px;
   height: 40px;
@@ -13,12 +13,12 @@ export const NoticeMsg = styled.div`
   margin-bottom: 10px;
 `;
 
-export const NoticeTitle = styled.h3`
+export const NotificationTitle = styled.h3`
   font-size: 20px;
   font-weight: 600;
 `;
 
-export const NoticeTitleBox = styled.div`
+export const NotificationTitleBox = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;

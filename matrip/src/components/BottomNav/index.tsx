@@ -33,7 +33,7 @@ function BottomNav() {
 
 const NavContainer = styled.div`
   width: 100%;
-  height: 70px;
+  height: 55px;
   display: flex;
   align-items: center;
   justify-content: center;

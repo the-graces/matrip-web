@@ -1,20 +1,20 @@
 import React from 'react';
 import { AiFillDelete } from 'react-icons/ai';
-import { noticedata } from '../../data/noticedata';
+import { notificationdata } from '../../data/notificationdata';
 import * as gs from '../../styles/GlobalStyles';
-import * as ns from './noticeStyle';
+import * as ns from './notificationStyle';
 
-type NoticeType = 'accept' | 'request' | 'companion' | 'update';
+type NotificationType = 'accept' | 'request' | 'companion' | 'update';
 
-const noticeMsgs: Record<NoticeType, string> = {
+const noticeMsgs: Record<NotificationType, string> = {
   accept: '신청을 수락했습니다!',
   request: '참가 신청했습니다!',
   companion: '동행자로 추가했습니다.',
   update: '여행 정보가 변경되었습니다.'
 };
 
-const getMsg = (notice: { type?: NoticeType }) => {
-  const msg = noticeMsgs[notice?.type as NoticeType];
+const getMsg = (notice: { type?: NotificationType }) => {
+  const msg = noticeMsgs[notice?.type as NotificationType];
 
   if (msg) {
     return `${msg}`;
@@ -23,13 +23,13 @@ const getMsg = (notice: { type?: NoticeType }) => {
   }
 };
 
-function Notice() {
+function Notification() {
   const today = new Date();
   const arrangeToday = `${today.getFullYear()}.${
     today.getMonth() + 1
   }.${today.getDate()}`;
 
-  const { noticeToday, noticePast } = noticedata.reduce(
+  const { noticeToday, noticePast } = notificationdata.reduce(
     (acc, notice) => {
       if (notice.date === arrangeToday) {
         acc.noticeToday.push(notice);
@@ -44,32 +44,32 @@ function Notice() {
   return (
     <gs.MainContainer>
       <gs.MainBox>
-        <ns.NoticeBox>
-          <ns.NoticeTitleBox>
-            <ns.NoticeTitle>오늘</ns.NoticeTitle>
-          </ns.NoticeTitleBox>
+        <ns.NotificationBox>
+          <ns.NotificationTitleBox>
+            <ns.NotificationTitle>오늘</ns.NotificationTitle>
+          </ns.NotificationTitleBox>
           {noticeToday?.map((notice: any) => (
-            <ns.NoticeMsg key={notice.id}>
+            <ns.NotificationMsg key={notice.id}>
               {notice.nick}님이 {getMsg(notice)}
-            </ns.NoticeMsg>
+            </ns.NotificationMsg>
           ))}
-        </ns.NoticeBox>
-        <ns.NoticeBox>
-          <ns.NoticeTitleBox>
-            <ns.NoticeTitle>지난 알림</ns.NoticeTitle>
+        </ns.NotificationBox>
+        <ns.NotificationBox>
+          <ns.NotificationTitleBox>
+            <ns.NotificationTitle>지난 알림</ns.NotificationTitle>
             <ns.DeleteBtn>
               <AiFillDelete size='24' />
             </ns.DeleteBtn>
-          </ns.NoticeTitleBox>
+          </ns.NotificationTitleBox>
           {noticePast?.map((notice: any) => (
-            <ns.NoticeMsg key={notice.id}>
+            <ns.NotificationMsg key={notice.id}>
               {notice.nick}님이 {getMsg(notice)}
-            </ns.NoticeMsg>
+            </ns.NotificationMsg>
           ))}
-        </ns.NoticeBox>
+        </ns.NotificationBox>
       </gs.MainBox>
     </gs.MainContainer>
   );
 }
 
-export default Notice;
+export default Notification;
