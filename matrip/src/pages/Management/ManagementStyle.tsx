@@ -74,18 +74,18 @@ export const PostButton = styled.div`
   margin: auto;
   margin-top: 15px;
   gap: 20px;
-  margin-bottom: 25px;
 `;
 
 export const PostButtonL = styled.div`
   width: 162px;
   height: 42px;
+  padding-bottom: 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: #056676;
   color: white;
-  border-radius: 16px;
+  border-radius: 16px 16px 0px 0px;
   justify-content: center;
 `;
 
@@ -101,13 +101,21 @@ export const PostButtonR = styled.div`
   justify-content: center;
 `;
 
+export const ApplicationBackGround = styled.div`
+  width: 100%;
+  border-top: 2px solid #056676;
+`;
+
 export const ManagementBtn = styled.div`
   display: flex;
+  justify-content: center;
+  margin-top: 20px;
 `;
 
 export const ManagementBtnL = styled.button`
   width: 42px;
   height: 42px;
+  margin-right: 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -120,6 +128,7 @@ export const ManagementBtnL = styled.button`
 export const ManagementBtnR = styled.button`
   width: 42px;
   height: 42px;
+  margin-left: 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;

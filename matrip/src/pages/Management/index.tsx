@@ -1,10 +1,10 @@
 import React from 'react';
 import './index.scss';
-
 import * as iss from './ManagementStyle';
 import * as gs from '../../styles/GlobalStyles';
 
 import { postdata } from '../../data/postdata';
+import Slide from './ManagementSlide/Slide';
 import { AiOutlineCheck } from 'react-icons/ai';
 import { FiX } from 'react-icons/fi';
 
@@ -19,7 +19,6 @@ const Management: React.FC = () => {
             <iss.profileImgBox>
               <iss.profileImg src={post.imgurl} alt='유저 프로필' />
             </iss.profileImgBox>
-            {/* <iss.Nickname>{post.nick}</iss.Nickname> */}
           </iss.profileBox>
           <iss.postContent to={'/itineraryInfo'}>
             <iss.postTitle>{post.destination}</iss.postTitle>
@@ -35,6 +34,9 @@ const Management: React.FC = () => {
           <iss.PostButtonR>여정 수정</iss.PostButtonR>
         </iss.PostButton>
 
+        <iss.ApplicationBackGround>
+          <Slide></Slide>
+        </iss.ApplicationBackGround>
         <iss.ManagementBtn>
           <iss.ManagementBtnL>
             <AiOutlineCheck size='24' />
