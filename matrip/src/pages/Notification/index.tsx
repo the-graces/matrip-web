@@ -3,6 +3,7 @@ import { AiFillDelete } from 'react-icons/ai';
 import { notificationdata } from '../../data/notificationdata';
 import * as gs from '../../styles/GlobalStyles';
 import * as ns from './notificationStyle';
+import Header from '../../components/Header';
 
 type NotificationType = 'accept' | 'request' | 'companion' | 'update';
 
@@ -43,28 +44,41 @@ function Notification() {
 
   return (
     <gs.MainContainer>
+      <Header />
       <gs.MainBox>
         <ns.NotificationBox>
           <ns.NotificationTitleBox>
             <ns.NotificationTitle>오늘</ns.NotificationTitle>
           </ns.NotificationTitleBox>
           {noticeToday?.map((notice: any) => (
-            <ns.NotificationMsg key={notice.id}>
-              {notice.nick}님이 {getMsg(notice)}
-            </ns.NotificationMsg>
+            <ns.NotificationMsgBox key={notice.id} className='msg'>
+              <ns.ProfileIconBox>
+                <ns.ProfileImg
+                  src='https://img2.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202302/21/spotvnews/20230221133133423kfxy.jpg'
+                  alt='유저 프로필'
+                />
+              </ns.ProfileIconBox>
+              <strong>{notice.nick}</strong>님이 {getMsg(notice)}
+            </ns.NotificationMsgBox>
           ))}
         </ns.NotificationBox>
         <ns.NotificationBox>
           <ns.NotificationTitleBox>
             <ns.NotificationTitle>지난 알림</ns.NotificationTitle>
             <ns.DeleteBtn>
-              <AiFillDelete size='24' />
+              <AiFillDelete size='24' color='#9c9c9c' />
             </ns.DeleteBtn>
           </ns.NotificationTitleBox>
           {noticePast?.map((notice: any) => (
-            <ns.NotificationMsg key={notice.id}>
-              {notice.nick}님이 {getMsg(notice)}
-            </ns.NotificationMsg>
+            <ns.NotificationMsgBox key={notice.id} className='msg'>
+              <ns.ProfileIconBox>
+                <ns.ProfileImg
+                  src='https://img2.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202302/21/spotvnews/20230221133133423kfxy.jpg'
+                  alt='유저 프로필'
+                />
+              </ns.ProfileIconBox>
+              <strong>{notice.nick}</strong>님이 {getMsg(notice)}
+            </ns.NotificationMsgBox>
           ))}
         </ns.NotificationBox>
       </gs.MainBox>

@@ -3,7 +3,7 @@ export const notificationdata = [
     id: 1,
     nick: 'test1',
     type: 'accept',
-    date: '2023.7.9'
+    date: '2023.7.13'
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ export const notificationdata = [
     id: 3,
     nick: 'test3',
     type: 'request',
-    date: '2023.7.9'
+    date: '2023.7.13'
   },
   {
     id: 4,
