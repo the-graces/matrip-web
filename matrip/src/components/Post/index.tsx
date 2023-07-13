@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { postdata } from '../../data/postdata';
 import * as ps from './postStyle';
 import DibsBtn from '../DibsBtn';
@@ -9,16 +9,17 @@ interface PostProps {
 
 const Post: React.FC<PostProps> = ({ searchInput }) => {
   const target = useRef(null);
+  const [filteredPostdata, setFilteredPostdata] = useState<any[]>([]);
 
   useEffect(() => {
     const options = {
-      threshold: 1.0
+      threshold: 0.5
     };
 
     const callback: IntersectionObserverCallback = (entries) => {
       const target = entries[0].target;
       if (target instanceof HTMLElement && entries[0].isIntersecting) {
-        // loadMoreData();
+        loadMoreData();
       }
     };
 
@@ -37,9 +38,22 @@ const Post: React.FC<PostProps> = ({ searchInput }) => {
     };
   }, []);
 
-  const filteredPostdata = postdata.filter((post: any) =>
-    post.destination.includes(searchInput)
-  );
+  const loadMoreData = () => {
+    const dummyData = [
+      { id: 4, destination: '더미 도시 4', startDate: '2023-07-15', endDate: '2023-07-20', personnel: 3 },
+      { id: 5, destination: '더미 도시 5', startDate: '2023-07-18', endDate: '2023-07-25', personnel: 2 },
+      { id: 6, destination: '더미 도시 6', startDate: '2023-07-22', endDate: '2023-07-29', personnel: 4 },
+    ];
+
+    setFilteredPostdata(prevData => [...prevData, ...dummyData]);
+  };
+
+  useEffect(() => {
+    const updatedFilteredPostdata = postdata.filter((post: any) =>
+      post.destination.includes(searchInput)
+    );
+    setFilteredPostdata(updatedFilteredPostdata);
+  }, [searchInput]);
 
   return (
     <>
