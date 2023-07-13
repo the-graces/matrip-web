@@ -33,14 +33,14 @@ function BottomNav() {
 
 const NavContainer = styled.div`
   width: 100%;
-  height: 70px;
+  height: 55px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #fff;
   position: fixed;
   bottom: 0;
-  border-top: solid #bebebe 1px;
+  border-top: solid #dcdcdc 1px;
 `;
 
 const NavWrap = styled.nav`

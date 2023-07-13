@@ -35,12 +35,10 @@ s,
 samp,
 small,
 strike,
-strong,
 sub,
 sup,
 tt,
 var,
-b,
 u,
 i,
 center,
@@ -147,7 +145,8 @@ button{
 export const MainContainer = styled.div`
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   font-family: Pretendard;
 `;
 
@@ -158,6 +157,7 @@ export const MainBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 30px;
 
   @media screen and (min-width: 600px) {
     width: 600px;
