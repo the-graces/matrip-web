@@ -6,7 +6,7 @@ import * as gs from '../../styles/GlobalStyles';
 
 import { postdata } from '../../data/postdata';
 import { AiOutlineHeart } from 'react-icons/ai';
-import Post from '../../components/Post/Post';
+import UserList from './UserList';
 
 const TripSchedule: React.FC = () => {
   const post = postdata[0];
@@ -40,7 +40,7 @@ const TripSchedule: React.FC = () => {
           <iss.TripSchedulePostButtonR>삭제</iss.TripSchedulePostButtonR>
         </iss.TripSchedulePostButton>
         <iss.userList>
-          <Post />
+          <UserList />
         </iss.userList>
       </iss.MainContainer>
     </gs.MainContainer>
