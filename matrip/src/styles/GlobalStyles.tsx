@@ -163,3 +163,11 @@ export const MainBox = styled.div`
     width: 600px;
   }
 `;
+
+
+export const PageName = styled.div`
+  width: 80%;
+  margin-top: 15px;
+  font-weight: 800;
+  font-size: 22px;
+`

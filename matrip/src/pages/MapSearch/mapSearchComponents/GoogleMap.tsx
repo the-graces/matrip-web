@@ -133,8 +133,7 @@ const GoogleMapComponent: React.FC<GoogleMapComponentProps> = ({
             <Marker
               key={clickedLocation.lat + clickedLocation.lng}
               position={{ lat: clickedLocation.lat, lng: clickedLocation.lng }}
-              onClick={(e: google.maps.MapMouseEvent) => console.log('cliecked')}
-
+              onClick={(e: google.maps.MapMouseEvent) => console.log('cliecked')} 
               icon={
                 {url: `data:image/svg+xml;utf-8,${encodeURIComponent(
                   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" fill="red">

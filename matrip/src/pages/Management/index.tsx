@@ -1,14 +1,14 @@
 import React from 'react';
 import './index.scss';
-
-import * as iss from './TripScheduleStyle';
+import * as iss from './ManagementStyle';
 import * as gs from '../../styles/GlobalStyles';
 
 import { postdata } from '../../data/postdata';
-import { AiOutlineHeart } from 'react-icons/ai';
-import UserList from '../../components/UserList';
+import Slide from './ManagementSlide/Slide';
+import { AiOutlineCheck } from 'react-icons/ai';
+import { FiX } from 'react-icons/fi';
 
-const TripSchedule: React.FC = () => {
+const Management: React.FC = () => {
   const post = postdata[0];
 
   return (
@@ -19,7 +19,6 @@ const TripSchedule: React.FC = () => {
             <iss.profileImgBox>
               <iss.profileImg src={post.imgurl} alt='유저 프로필' />
             </iss.profileImgBox>
-            {/* <iss.Nickname>{post.nick}</iss.Nickname> */}
           </iss.profileBox>
           <iss.postContent to={'/itineraryInfo'}>
             <iss.postTitle>{post.destination}</iss.postTitle>
@@ -30,13 +29,25 @@ const TripSchedule: React.FC = () => {
           </iss.postContent>
         </iss.postBox>
 
-        <iss.wantList>찜 목록</iss.wantList>
-        <iss.userList>
-          <UserList />
-        </iss.userList>
+        <iss.PostButton>
+          <iss.PostButtonL>신청 관리</iss.PostButtonL>
+          <iss.PostButtonR>여정 수정</iss.PostButtonR>
+        </iss.PostButton>
+
+        <iss.ApplicationBackGround>
+          <Slide></Slide>
+        </iss.ApplicationBackGround>
+        <iss.ManagementBtn>
+          <iss.ManagementBtnL>
+            <AiOutlineCheck size='24' />
+          </iss.ManagementBtnL>
+          <iss.ManagementBtnR>
+            <FiX size='24' />
+          </iss.ManagementBtnR>
+        </iss.ManagementBtn>
       </iss.MainContainer>
     </gs.MainContainer>
   );
 };
 
-export default TripSchedule;
+export default Management;

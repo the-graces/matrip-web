@@ -15,9 +15,8 @@ export const postBox = styled.div`
   height: 180px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  border: solid #000 1px;
-  border-radius: 16px;
+  border-bottom: solid #c5c5c5 1px;
+  position: relative;
 `;
 
 export const profileBox = styled(Link)`
@@ -25,20 +24,19 @@ export const profileBox = styled(Link)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #000;
-  text-decoration: none;
-  margin-left: 50px;
 `;
+
 export const profileImgBox = styled.div`
-  width: 100px;
-  height: 100px;
+  width: 160px;
+  height: 160px;
+  margin-right: 30px;
 `;
 
 export const profileImg = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: 20%;
 `;
 
 export const Nickname = styled.h4`
@@ -53,119 +51,32 @@ export const postContent = styled(Link)`
 `;
 
 export const postTitle = styled.div`
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 800;
-  margin-bottom: 6px;
+  margin-bottom: 20px;
 `;
 
 export const postPeriod = styled.div`
-  font-size: 13px;
+  font-size: 16px;
   margin-bottom: 10px;
+  color: gray;
 `;
 
-export const LikeBtn = styled.button`
-  border: none;
-  background: none;
-  cursor: pointer;
-  padding: 0 10px;
-  margin-right: 30px;
+export const postDibsBtn = styled.div`
+  position: absolute;
+  right: 40px;
 `;
 
-export const TripSchedulePostButton = styled.div`
-  width: 50%;
-  display: flex;
-  border-radius: 40px;
-  margin: auto;
-  margin-top: 15px;
-  gap: 20px;
-  margin-bottom: 25px;
-`;
-
-export const TripSchedulePostButtonL = styled.div`
-  width: 100%;
-  height: 40px;
+export const wantList = styled.div`
+  font-size: 18px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  border: solid #000 1px;
-  border-radius: 16px;
-  justify-content: center;
-`;
-
-export const TripSchedulePostButtonR = styled.div`
-  width: 100%;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border: solid #000 1px;
-  border-radius: 16px;
-  justify-content: center;
+  padding: 15px;
+  font-weight: 700;
 `;
 
 export const userList = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 15px;
-`;
-
-export const userListPostBox = styled.div`
-  width: calc((100% - 20px) / 2);
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border: solid #000 1px;
-  border-radius: 16px;
-  margin-bottom: 20px;
-`;
-
-export const userListProfileBox = styled(Link)`
-  padding: 0 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #000;
-  text-decoration: none;
-`;
-
-export const userListProfileImgBox = styled.div`
-  width: 50px;
-  height: 50px;
-`;
-
-export const userListProfileImg = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-`;
-
-export const userListNickname = styled.h4`
-  font-size: 12px;
-  font-weight: 600;
-  margin: 0;
-`;
-
-export const userListPostContent = styled(Link)`
-  color: #000;
-  text-decoration: none;
-`;
-
-export const userListPostTitle = styled.div`
-  font-size: 16px;
-  font-weight: 800;
-`;
-
-export const userListPostPeriod = styled.div`
-  font-size: 13px;
-  margin-bottom: 5px;
-`;
-
-export const userListPLikeBtn = styled.button`
-  border: none;
-  background: none;
-  cursor: pointer;
-  padding: 0 10px;
 `;

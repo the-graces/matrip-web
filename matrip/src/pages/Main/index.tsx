@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HiMapPin, HiMiniMagnifyingGlass } from 'react-icons/hi2';
+import { HiMapPin, HiMiniMagnifyingGlass, HiPencil } from 'react-icons/hi2';
 import Post from '../../components/Post';
 import * as gs from '../../styles/GlobalStyles';
 import * as ms from './mainStyle';
@@ -12,7 +12,7 @@ const Main: React.FC = () => {
     setSearchInput(input);
   };
 
-  const handleKeyPress = (e:any) => {
+  const handleKeyPress = (e: any) => {
     if (e.key === 'Enter') {
       handleSearch();
     }
@@ -30,12 +30,12 @@ const Main: React.FC = () => {
             <ms.SearchBox>
               <ms.SearchInput
                 type='search'
-                placeholder='검색어를 입력해주세요.'
+                placeholder='여행장소를 입력해주세요!'
                 id='searchInput'
                 value={input}
                 onChange={getValue}
                 onKeyDown={handleKeyPress}
-              />
+              ></ms.SearchInput>
               <ms.SearchBtn
                 className='searchIcon'
                 type='submit'
@@ -44,18 +44,20 @@ const Main: React.FC = () => {
                 <HiMiniMagnifyingGlass size='24' />
               </ms.SearchBtn>
             </ms.SearchBox>
-            <ms.WriteBtn>글쓰기</ms.WriteBtn>
           </ms.SearchWriteBox>
           <ms.locationContainer>
             <ms.locationBox>
               <HiMapPin size='24' />
-              <ms.marginzeroP>서울 마포구 마포대로 122</ms.marginzeroP>
+             <ms.marginzeroP> 현위치 : 서울 마포구 마포대로 122</ms.marginzeroP>
             </ms.locationBox>
           </ms.locationContainer>
         </ms.MainBoxHeader>
         <ms.postContainer>
           <Post searchInput={searchInput} />
         </ms.postContainer>
+        <ms.WriteBtn>
+          <HiPencil size='24' color='white'></HiPencil>
+        </ms.WriteBtn>
       </gs.MainBox>
     </gs.MainContainer>
   );
