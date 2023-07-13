@@ -22,7 +22,7 @@ export const performReverseGeocode = (
             lat : latLng.lat(),
             lng : latLng.lat()
         }
-      }
+      };
       callback(res);
     } else {
       console.error('Google Maps Reverse Geocoding Error: ', status);

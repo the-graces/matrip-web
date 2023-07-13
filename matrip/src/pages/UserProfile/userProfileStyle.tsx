@@ -11,7 +11,7 @@ export const ProfileCard = styled.div`
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
   margin-top: 15px;
   margin-bottom: 20px;
-`
+`;
 
 // 왜 이미지 넓이가 달라짐?????????
 export const ImgCtnr = styled.div<{ $isEditable: boolean }>`
@@ -51,7 +51,7 @@ export const EditImg = styled.div`
     height: 100%; 
     background-color: #ffffff;
     background-color: rgba( 0, 0, 0, 0.5 );
-`
+`;
 
 
 export const InfoCtnr = styled.div<{ $isEditable: boolean }>`
@@ -61,7 +61,7 @@ export const InfoCtnr = styled.div<{ $isEditable: boolean }>`
   margin-top: 13px;
   height: ${({ $isEditable }) => ($isEditable ? '150px' : '270px')};
   transition: height 0.3s;
-`
+`;
 
 
 
