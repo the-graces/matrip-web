@@ -20,6 +20,7 @@ const Post: React.FC<PostProps> = ({ searchInput }) => {
       const target = entries[0].target;
       if (target instanceof HTMLElement && entries[0].isIntersecting) {
         loadMoreData();
+        loadMoreData();
       }
     };
 
@@ -40,12 +41,30 @@ const Post: React.FC<PostProps> = ({ searchInput }) => {
 
   const loadMoreData = () => {
     const dummyData = [
-      { id: 4, destination: '더미 도시 4', startDate: '2023-07-15', endDate: '2023-07-20', personnel: 3 },
-      { id: 5, destination: '더미 도시 5', startDate: '2023-07-18', endDate: '2023-07-25', personnel: 2 },
-      { id: 6, destination: '더미 도시 6', startDate: '2023-07-22', endDate: '2023-07-29', personnel: 4 },
+      {
+        id: 4,
+        destination: '더미 도시 4',
+        startDate: '2023-07-15',
+        endDate: '2023-07-20',
+        personnel: 3
+      },
+      {
+        id: 5,
+        destination: '더미 도시 5',
+        startDate: '2023-07-18',
+        endDate: '2023-07-25',
+        personnel: 2
+      },
+      {
+        id: 6,
+        destination: '더미 도시 6',
+        startDate: '2023-07-22',
+        endDate: '2023-07-29',
+        personnel: 4
+      }
     ];
 
-    setFilteredPostdata(prevData => [...prevData, ...dummyData]);
+    setFilteredPostdata((prevData) => [...prevData, ...dummyData]);
   };
 
   useEffect(() => {
@@ -63,7 +82,6 @@ const Post: React.FC<PostProps> = ({ searchInput }) => {
         filteredPostdata.map((post: any) => (
           <ps.postBox key={post.id}>
             <ps.profileBox to={'/userProfile'}>
-
               <ps.profileImgBox>
                 <ps.profileImg src={post.imgurl} alt='유저 프로필' />
               </ps.profileImgBox>
@@ -72,7 +90,6 @@ const Post: React.FC<PostProps> = ({ searchInput }) => {
             </ps.profileBox>
 
             <ps.postContent to={'/itineraryInfo'}>
-
               <ps.postTitle>{post.destination}</ps.postTitle>
               <ps.postPeriod>
                 {post.startDate}~{post.endData}
