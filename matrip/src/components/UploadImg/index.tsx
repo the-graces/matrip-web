@@ -19,8 +19,8 @@ import { useIconClickHandler } from '../../hooks/useIconClickHandler';
 import { AiFillCloseCircle } from 'react-icons/ai'
 import LoadingIncdicator from '../../components/LoadingIncdicator'
 
-// This is to demonstate how to make and center a % aspect crop
-// which is a bit trickier so we use some helper functions.
+
+// crop ratio 미리 설정
 function centerAspectCrop(
   mediaWidth: number,
   mediaHeight: number,
@@ -42,22 +42,22 @@ function centerAspectCrop(
 }
 
 
-
+// CropComponentsProps 인터페이스
 interface CropComponentsProps {
+  // 부모로 보내는 props
   sendimg: (urlFromCrop: string) => void;
   close: (closeToggle: boolean) => void;
+  // 부모에서 받는 props
+  imgdata: string;
 }
 
-const UploadImg: React.FC<CropComponentsProps> = ({ sendimg, close }) => {
-
-  const [imgSrc, setImgSrc] = useState('')
+const UploadImg: React.FC<CropComponentsProps> = ({ sendimg, close, imgdata }) => {
+  // Loading indicator 상태
   const [loading, setLoading] = useState<boolean>(false)
+  // canvas ref 참조
   const previewCanvasRef = useRef<HTMLCanvasElement>(null)
+  // image ref 참조
   const imgRef = useRef<HTMLImageElement>(null)
-  const imageInputRef = useRef<HTMLInputElement>(null);
-  const hiddenAnchorRef = useRef<HTMLAnchorElement>(null)
-
-  // const blobUrlRef = useRef('')
 
   const [crop, setCrop] = useState<Crop>()
   const [completedCrop, setCompletedCrop] = useState<PixelCrop>()
@@ -65,27 +65,10 @@ const UploadImg: React.FC<CropComponentsProps> = ({ sendimg, close }) => {
   const ROTATE = 0;
   const ASPECT = 1 / 1;
 
-  console.log(loading)
-
-  const handleClose = useIconClickHandler(() => {
+  // useIconClickHandler
+  const handleClose = (() => {
     close(false);
   })
-
-  /**
-   * input에서
-   * 최초 파일 파일 불러오기
-   * @param e 
-   */
-  function onSelectFile(e: React.ChangeEvent<HTMLInputElement>) {
-    if (e.target.files && e.target.files.length > 0) {
-      setCrop(undefined)
-      const reader = new FileReader()
-      reader.addEventListener('load', () =>
-        setImgSrc(reader.result?.toString() || ''),
-      )
-      reader.readAsDataURL(e.target.files[0])
-    }
-  }
 
   function onImageLoad(e: React.SyntheticEvent<HTMLImageElement>) {
     if (ASPECT) {
@@ -103,13 +86,12 @@ const UploadImg: React.FC<CropComponentsProps> = ({ sendimg, close }) => {
     if (!previewCanvasRef.current) {
       throw new Error('Crop canvas does not exist')
     }
-
     previewCanvasRef.current.toBlob(async (blob) => {
       if (!blob) {
         throw new Error('Failed to create blob')
       }
+      // !!TODO datedata 규칙 설정하기
       const datedata = Math.floor(Math.random() * 1000000);
-
       const filename = `${datedata}.jpg`;
       const uploadParams = {
         Bucket: bucketName as string,
@@ -117,30 +99,20 @@ const UploadImg: React.FC<CropComponentsProps> = ({ sendimg, close }) => {
         Body: blob,
         ContentType: 'image/jpeg',
       };
-      console.log(uploadParams)
+      // console.log(uploadParams)
       try {
         await s3.upload(uploadParams).promise();
         const s3Url = `https://${bucketName}.s3.amazonaws.com/${filename}`;
-        await sendimg(s3Url);
+        sendimg(s3Url);
         setLoading(false)
         close(false)
       } catch (error) {
         console.error('Error uploading to S3:', error);
       }
-
-
-
-      // if (blobUrlRef.current) {
-      //   URL.revokeObjectURL(blobUrlRef.current)
-      //   sendimg(blobUrlRef.current)
-      // }
-      // blobUrlRef.current = URL.createObjectURL(blob)
-      // hiddenAnchorRef.current!.href = blobUrlRef.current
-      // hiddenAnchorRef.current!.click()
     })
   }
 
-
+  // crop 영역 선택시 debounce 
   useDebounceEffect(
     async () => {
       if (
@@ -149,7 +121,6 @@ const UploadImg: React.FC<CropComponentsProps> = ({ sendimg, close }) => {
         imgRef.current &&
         previewCanvasRef.current
       ) {
-        // We use canvasPreview as it's much faster than imgPreview.
         canvasPreview(
           imgRef.current,
           previewCanvasRef.current,
@@ -163,66 +134,34 @@ const UploadImg: React.FC<CropComponentsProps> = ({ sendimg, close }) => {
     [completedCrop, SCALE, ROTATE],
   )
 
-  async function onUploadButtonClick() {
-    if (imageInputRef.current) {
-      imageInputRef.current.click();
-    }
-  }
-
   return (
     <uis.EditImageCtnr>
       <uis.CropControl>
-        <uis.ImageInput type="file" accept="image/*" onChange={onSelectFile} ref={imageInputRef} hidden />
-        <div onClick={onUploadButtonClick}>
-          이미지  업로드 버튼
-        </div >
-        <AiFillCloseCircle
-          size={30}
-          onClick={handleClose}
-        />
-        {/* <div>
-          <label htmlFor="scale-input">Scale: </label>
-          <input
-            id="scale-input"
-            type="number"
-            step="0.1"
-            value={scale}
-            disabled={!imgSrc}
-            onChange={(e) => setScale(Number(e.target.value))}
-          />
-        </div>
-        <div>
-          <label htmlFor="rotate-input">Rotate: </label>
-          <input
-            id="rotate-input"
-            type="number"
-            value={rotate}
-            disabled={!imgSrc}
-            onChange={(e) =>
-              setRotate(Math.min(180, Math.max(-180, Number(e.target.value))))
-            }
-          />
-        </div> */}
-        {/* <div>
-          <button onClick={handleToggleAspectClick}>
-            Toggle aspect {aspect ? 'off' : 'on'}
-          </button>
-        </div> */}
+        <uis.EditImgHeader>
+          {/* <AiFillCloseCircle
+            size={30}
+            onClick={handleClose}
+            style={{marginLeft:'10px'}}
+          /> */}
+          <uis.SaveImgBtn onClick={handleClose} >취소</uis.SaveImgBtn>
+          <uis.SaveImgBtn onClick={onDownloadCropClick}>저장</uis.SaveImgBtn>
+        </uis.EditImgHeader>
       </uis.CropControl>
       {loading &&
         <LoadingIncdicator />
       }
-      {imgSrc && (
+      {imgdata && (
         <ReactCrop
           crop={crop}
           onChange={(_, percentCrop) => setCrop(percentCrop)}
           onComplete={(c) => setCompletedCrop(c)}
           aspect={ASPECT}
+          style={{width:'90%'}}
         >
           <img
             ref={imgRef}
             alt="Crop me"
-            src={imgSrc}
+            src={imgdata}
             style={{ transform: `scale(${SCALE}) rotate(${ROTATE}deg)`, width: '600px' }}
             onLoad={onImageLoad}
           />
@@ -240,20 +179,6 @@ const UploadImg: React.FC<CropComponentsProps> = ({ sendimg, close }) => {
                 height: completedCrop.height,
               }}
             />
-          </div>
-          <div>
-            <button onClick={onDownloadCropClick}>프로필 설정</button>
-            <a
-              ref={hiddenAnchorRef}
-              download
-              style={{
-                position: 'absolute',
-                top: '-200vh',
-                visibility: 'hidden',
-              }}
-            >
-              Hidden download
-            </a>
           </div>
         </>
       )}
