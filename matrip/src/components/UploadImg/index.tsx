@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 
 import ReactCrop, {
   centerCrop,
@@ -10,7 +10,7 @@ import 'react-image-crop/dist/ReactCrop.css'
 
 import * as uis from './uploadImageStyle';
 
-import {bucketName, s3} from '../../apis/AWS-S3';
+import { bucketName, s3 } from '../../apis/AWS-S3';
 
 import { canvasPreview } from './canvasPreview';
 import { useDebounceEffect } from './useDebounceEffect';
@@ -41,12 +41,14 @@ function centerAspectCrop(
   )
 }
 
-interface CropComponentsProps{
+
+
+interface CropComponentsProps {
   sendimg: (urlFromCrop: string) => void;
   close: (closeToggle: boolean) => void;
 }
 
-const UploadImg: React.FC<CropComponentsProps> = ({sendimg, close}) => {
+const UploadImg: React.FC<CropComponentsProps> = ({ sendimg, close }) => {
 
   const [imgSrc, setImgSrc] = useState('')
   const [loading, setLoading] = useState<boolean>(false)
@@ -54,12 +56,14 @@ const UploadImg: React.FC<CropComponentsProps> = ({sendimg, close}) => {
   const imgRef = useRef<HTMLImageElement>(null)
   const imageInputRef = useRef<HTMLInputElement>(null);
   const hiddenAnchorRef = useRef<HTMLAnchorElement>(null)
-  const blobUrlRef = useRef('')
+
+  // const blobUrlRef = useRef('')
+
   const [crop, setCrop] = useState<Crop>()
   const [completedCrop, setCompletedCrop] = useState<PixelCrop>()
   const SCALE = 1;
   const ROTATE = 0;
-  const ASPECT = 1/1;
+  const ASPECT = 1 / 1;
 
   console.log(loading)
 
@@ -74,7 +78,7 @@ const UploadImg: React.FC<CropComponentsProps> = ({sendimg, close}) => {
    */
   function onSelectFile(e: React.ChangeEvent<HTMLInputElement>) {
     if (e.target.files && e.target.files.length > 0) {
-      setCrop(undefined) 
+      setCrop(undefined)
       const reader = new FileReader()
       reader.addEventListener('load', () =>
         setImgSrc(reader.result?.toString() || ''),
@@ -100,12 +104,12 @@ const UploadImg: React.FC<CropComponentsProps> = ({sendimg, close}) => {
       throw new Error('Crop canvas does not exist')
     }
 
-    previewCanvasRef.current.toBlob(async(blob) => {
+    previewCanvasRef.current.toBlob(async (blob) => {
       if (!blob) {
         throw new Error('Failed to create blob')
       }
-      const datedata = Math.floor(Math.random()*1000000);
-  
+      const datedata = Math.floor(Math.random() * 1000000);
+
       const filename = `${datedata}.jpg`;
       const uploadParams = {
         Bucket: bucketName as string,
@@ -168,14 +172,14 @@ const UploadImg: React.FC<CropComponentsProps> = ({sendimg, close}) => {
   return (
     <uis.EditImageCtnr>
       <uis.CropControl>
-      <uis.ImageInput type="file" accept="image/*" onChange={onSelectFile} ref={imageInputRef} hidden />
-        <div  onClick={onUploadButtonClick}>
+        <uis.ImageInput type="file" accept="image/*" onChange={onSelectFile} ref={imageInputRef} hidden />
+        <div onClick={onUploadButtonClick}>
           이미지  업로드 버튼
         </div >
-        <AiFillCloseCircle 
+        <AiFillCloseCircle
           size={30}
           onClick={handleClose}
-          />
+        />
         {/* <div>
           <label htmlFor="scale-input">Scale: </label>
           <input
@@ -219,14 +223,14 @@ const UploadImg: React.FC<CropComponentsProps> = ({sendimg, close}) => {
             ref={imgRef}
             alt="Crop me"
             src={imgSrc}
-            style={{ transform: `scale(${SCALE}) rotate(${ROTATE}deg)`, width:'600px' }}
+            style={{ transform: `scale(${SCALE}) rotate(${ROTATE}deg)`, width: '600px' }}
             onLoad={onImageLoad}
           />
         </ReactCrop>
       )}
       {completedCrop && (
         <>
-          <div style={{display:'none'}}>
+          <div style={{ display: 'none' }}>
             <canvas
               ref={previewCanvasRef}
               style={{

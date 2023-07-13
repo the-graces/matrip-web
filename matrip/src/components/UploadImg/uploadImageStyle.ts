@@ -1,7 +1,7 @@
 import {styled} from 'styled-components';
 
 export const EditImageCtnr = styled.div`
-    z-index: 999;
+    z-index: 1000;
     position: absolute;
     left: 50%;
     top: 0;
