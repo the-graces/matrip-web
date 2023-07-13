@@ -40,7 +40,7 @@ const NavContainer = styled.div`
   background-color: #fff;
   position: fixed;
   bottom: 0;
-  border-top: solid #bebebe 1px;
+  border-top: solid #dcdcdc 1px;
 `;
 
 const NavWrap = styled.nav`
