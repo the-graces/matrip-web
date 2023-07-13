@@ -29,7 +29,7 @@ const DibsBtn: React.FC<StateType> = ({ id, state }) => {
       {dibsState ? <AiFillHeart size='24' /> : <AiOutlineHeart size='24' />}
     </DibsBtnBox>
   );
-}
+};
 
 const DibsBtnBox = styled.button`
   border: none;

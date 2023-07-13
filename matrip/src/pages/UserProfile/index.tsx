@@ -38,7 +38,7 @@ const UserProfile: React.FC = () => {
   // 블러 처리된 이미지 영역
   const imageInputRef = useRef<HTMLInputElement>(null);
   //로컬에서 불러온 이미지
-  const [localimg, setLocalImg] = useState<string>('')
+  const [localimg, setLocalImg] = useState<string>('');
 
 
   // 이미지 선택창 열기
@@ -55,25 +55,25 @@ const UserProfile: React.FC = () => {
 
   // crop modal 열기
   const handleOpenCropImage = useIconClickHandler(() => {
-    setOpenCropImage(true)
+    setOpenCropImage(true);
   });
 
   // 선택한 이미지에 대한 처리
   function onSelectFile(e: React.ChangeEvent<HTMLInputElement>) {
     if (e.target.files && e.target.files.length > 0) {
       // setCrop(undefined)
-      const reader = new FileReader()
+      const reader = new FileReader();
       reader.addEventListener('load', () =>
         setLocalImg(reader.result?.toString() || ''),
-      )
-      reader.readAsDataURL(e.target.files[0])
+      );
+      reader.readAsDataURL(e.target.files[0]);
     }
-    setOpenCropImage(true)
+    setOpenCropImage(true);
   }
 
   // 유저 정보 수정가능 여부 상태 변경
   const handleEditUserInfo = useIconClickHandler(() => {
-    setIsEditable(!isEditable)
+    setIsEditable(!isEditable);
   });
 
   // 받아온 이미지 s3 url setPickedImg
@@ -86,13 +86,13 @@ const UserProfile: React.FC = () => {
     e: React.ChangeEvent<HTMLInputElement>,
     fieldName: keyof UserInfo
   ) => {
-    setUserInfo({ ...userInfo, [fieldName]: e.target.value })
-  }
+    setUserInfo({ ...userInfo, [fieldName]: e.target.value });
+  };
 
   // 저장된 값 서버로 POST
   const handleSubmit = () => {
-    console.log('handle submit')
-  }
+    console.log('handle submit');
+  };
 
 
 
@@ -100,7 +100,7 @@ const UserProfile: React.FC = () => {
 
   // 임시
   if (!pickedImg) {
-    setPickedImg(prf.imgurl)
+    setPickedImg(prf.imgurl);
   }
 
   return (

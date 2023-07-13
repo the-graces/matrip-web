@@ -1,12 +1,12 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react';
 
 import ReactCrop, {
   centerCrop,
   makeAspectCrop,
   Crop,
   PixelCrop,
-} from 'react-image-crop'
-import 'react-image-crop/dist/ReactCrop.css'
+} from 'react-image-crop';
+import 'react-image-crop/dist/ReactCrop.css';
 
 import * as uis from './uploadImageStyle';
 
@@ -16,8 +16,8 @@ import { canvasPreview } from './canvasPreview';
 import { useDebounceEffect } from './useDebounceEffect';
 import { useIconClickHandler } from '../../hooks/useIconClickHandler';
 
-import { AiFillCloseCircle } from 'react-icons/ai'
-import LoadingIncdicator from '../../components/LoadingIncdicator'
+import { AiFillCloseCircle } from 'react-icons/ai';
+import LoadingIncdicator from '../../components/LoadingIncdicator';
 
 
 // crop ratio 미리 설정
@@ -38,7 +38,7 @@ function centerAspectCrop(
     ),
     mediaWidth,
     mediaHeight,
-  )
+  );
 }
 
 
@@ -53,14 +53,14 @@ interface CropComponentsProps {
 
 const UploadImg: React.FC<CropComponentsProps> = ({ sendimg, close, imgdata }) => {
   // Loading indicator 상태
-  const [loading, setLoading] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(false);
   // canvas ref 참조
-  const previewCanvasRef = useRef<HTMLCanvasElement>(null)
+  const previewCanvasRef = useRef<HTMLCanvasElement>(null);
   // image ref 참조
-  const imgRef = useRef<HTMLImageElement>(null)
+  const imgRef = useRef<HTMLImageElement>(null);
 
-  const [crop, setCrop] = useState<Crop>()
-  const [completedCrop, setCompletedCrop] = useState<PixelCrop>()
+  const [crop, setCrop] = useState<Crop>();
+  const [completedCrop, setCompletedCrop] = useState<PixelCrop>();
   const SCALE = 1;
   const ROTATE = 0;
   const ASPECT = 1 / 1;
@@ -68,12 +68,12 @@ const UploadImg: React.FC<CropComponentsProps> = ({ sendimg, close, imgdata }) =
   // useIconClickHandler
   const handleClose = (() => {
     close(false);
-  })
+  });
 
   function onImageLoad(e: React.SyntheticEvent<HTMLImageElement>) {
     if (ASPECT) {
-      const { width, height } = e.currentTarget
-      setCrop(centerAspectCrop(width, height, ASPECT))
+      const { width, height } = e.currentTarget;
+      setCrop(centerAspectCrop(width, height, ASPECT));
     }
   }
 
@@ -82,13 +82,13 @@ const UploadImg: React.FC<CropComponentsProps> = ({ sendimg, close, imgdata }) =
    * => s3에 업로드로 변경
    */
   async function onDownloadCropClick() {
-    setLoading(true)
+    setLoading(true);
     if (!previewCanvasRef.current) {
-      throw new Error('Crop canvas does not exist')
+      throw new Error('Crop canvas does not exist');
     }
     previewCanvasRef.current.toBlob(async (blob) => {
       if (!blob) {
-        throw new Error('Failed to create blob')
+        throw new Error('Failed to create blob');
       }
       // !!TODO datedata 규칙 설정하기
       const datedata = Math.floor(Math.random() * 1000000);
@@ -104,12 +104,12 @@ const UploadImg: React.FC<CropComponentsProps> = ({ sendimg, close, imgdata }) =
         await s3.upload(uploadParams).promise();
         const s3Url = `https://${bucketName}.s3.amazonaws.com/${filename}`;
         sendimg(s3Url);
-        setLoading(false)
-        close(false)
+        setLoading(false);
+        close(false);
       } catch (error) {
         console.error('Error uploading to S3:', error);
       }
-    })
+    });
   }
 
   // crop 영역 선택시 debounce 
@@ -127,12 +127,12 @@ const UploadImg: React.FC<CropComponentsProps> = ({ sendimg, close, imgdata }) =
           completedCrop,
           SCALE,
           ROTATE,
-        )
+        );
       }
     },
     500,
     [completedCrop, SCALE, ROTATE],
-  )
+  );
 
   return (
     <uis.EditImageCtnr>
@@ -183,6 +183,6 @@ const UploadImg: React.FC<CropComponentsProps> = ({ sendimg, close, imgdata }) =
         </>
       )}
     </uis.EditImageCtnr>
-  )
-}
+  );
+};
 export default UploadImg;

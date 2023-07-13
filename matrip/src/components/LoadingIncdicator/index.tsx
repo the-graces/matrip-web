@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
-import {FaCarSide} from 'react-icons/fa'
+import {FaCarSide} from 'react-icons/fa';
 
 const LoadingIndicatorContainer = styled.div`
   display: flex;
@@ -39,7 +39,7 @@ const Loader = styled.div`
 const LoadText = styled.div`
   font-weight: bold;
   font-size: 20px;
-`
+`;
 
 const LoadingIncdicator = () => {
   return (
@@ -50,5 +50,5 @@ const LoadingIncdicator = () => {
       <LoadText>LOADING...</LoadText>
     </LoadingIndicatorContainer>
   );
-}
-export default LoadingIncdicator
+};
+export default LoadingIncdicator;
