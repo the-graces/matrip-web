@@ -170,4 +170,4 @@ export const PageName = styled.div`
   margin-top: 15px;
   font-weight: 800;
   font-size: 22px;
-`
+`;
