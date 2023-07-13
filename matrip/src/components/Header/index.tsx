@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 import { BsArrowLeft, BsArrowLeftShort } from 'react-icons/bs';
 
@@ -27,15 +27,15 @@ const getTitle = (location: string) => {
 };
 
 function Header() {
+  const navigate = useNavigate();
   const page = useLocation().pathname.substring(1);
-  console.log(page);
 
   return (
     <NavContainer>
       <NavWrap>
-        <div>
+        <BackBtn onClick={() => navigate(-1)}>
           <BsArrowLeftShort size='24' />
-        </div>
+        </BackBtn>
         <NavTitle>{getTitle(page)}</NavTitle>
       </NavWrap>
     </NavContainer>
@@ -64,6 +64,12 @@ const NavWrap = styled.nav`
 const NavTitle = styled.div`
   margin-left: 10px;
   font-size: 18px;
+`;
+
+const BackBtn = styled.button`
+  border: none;
+  background: none;
+  padding: 0;
 `;
 
 export default Header;
