@@ -48,16 +48,21 @@ const Main: React.FC = () => {
           <ms.locationContainer>
             <ms.locationBox>
               <HiMapPin size='24' />
-             <ms.marginzeroP> 현위치 : 서울 마포구 마포대로 122</ms.marginzeroP>
+              <ms.marginzeroP>
+                {' '}
+                현위치 : 서울 마포구 마포대로 122
+              </ms.marginzeroP>
             </ms.locationBox>
           </ms.locationContainer>
         </ms.MainBoxHeader>
         <ms.postContainer>
           <Post searchInput={searchInput} />
+          <ms.WriteLink to={'/ItineraryInfo'}>
+            <ms.WriteBtn>
+              <HiPencil size='24' color='white'></HiPencil>
+            </ms.WriteBtn>
+          </ms.WriteLink>
         </ms.postContainer>
-        <ms.WriteBtn>
-          <HiPencil size='24' color='white'></HiPencil>
-        </ms.WriteBtn>
       </gs.MainBox>
     </gs.MainContainer>
   );

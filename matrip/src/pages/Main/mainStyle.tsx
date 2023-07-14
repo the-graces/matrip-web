@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 export const MainBoxHeader = styled.div`
@@ -34,15 +35,19 @@ export const SearchBtn = styled.button`
   cursor: pointer;
 `;
 
+export const WriteLink = styled(Link)`
+  padding: 0;
+  position: fixed;
+  bottom: 10%;
+  right: 36%;
+`;
+
 export const WriteBtn = styled.button`
   background: none;
   background-color: #056676;
   border-radius: 100%;
   height: 65px;
   width: 65px;
-  position: fixed;
-  bottom: 100px;
-  right: 670px;
   box-shadow: 2px 3px 5px;
   cursor: pointer;
 `;

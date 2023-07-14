@@ -15,12 +15,14 @@ import GlobalFonts from './styles/fonts';
 import { GlobalStyle } from './styles/GlobalStyles';
 import { lightTheme } from './styles/theme/theme';
 import Management from './pages/Management';
+import BottomNav from './components/BottomNav';
 
 function App() {
   return (
     <BrowserRouter>
       <GlobalFonts />
       <GlobalStyle theme={lightTheme} />
+      <BottomNav />
       <Routes>
         <Route path='/' element={<Main />} />
         <Route path='/friendSearch' element={<FriendSearch />} />

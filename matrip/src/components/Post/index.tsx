@@ -17,10 +17,14 @@ const Post: React.FC<PostProps> = ({ searchInput }) => {
     };
 
     const callback: IntersectionObserverCallback = (entries) => {
-      const target = entries[0].target;
-      if (target instanceof HTMLElement && entries[0].isIntersecting) {
-        loadMoreData();
-        loadMoreData();
+      const targetElement = entries[0].target;
+      if (targetElement instanceof HTMLElement && entries[0].isIntersecting) {
+        const filteredData = postdata.filter((post: any) =>
+          post.destination.includes(searchInput)
+        );
+        if (filteredData.length >= 0) {
+          loadMoreData();
+        }
       }
     };
 
@@ -37,27 +41,27 @@ const Post: React.FC<PostProps> = ({ searchInput }) => {
         observer.unobserve(currentTarget);
       }
     };
-  }, []);
+  }, [searchInput]);
 
   const loadMoreData = () => {
     const dummyData = [
       {
         id: 4,
-        destination: '더미 도시 4',
+        destination: '더미 제주도',
         startDate: '2023-07-15',
         endDate: '2023-07-20',
         personnel: 3
       },
       {
         id: 5,
-        destination: '더미 도시 5',
+        destination: '더미 강릉',
         startDate: '2023-07-18',
         endDate: '2023-07-25',
         personnel: 2
       },
       {
         id: 6,
-        destination: '더미 도시 6',
+        destination: '더미 광주',
         startDate: '2023-07-22',
         endDate: '2023-07-29',
         personnel: 4
@@ -85,14 +89,12 @@ const Post: React.FC<PostProps> = ({ searchInput }) => {
               <ps.profileImgBox>
                 <ps.profileImg src={post.imgurl} alt='유저 프로필' />
               </ps.profileImgBox>
-
-              {/* <ps.Nickname>{post.nick}</ps.Nickname> */}
             </ps.profileBox>
 
             <ps.postContent to={'/itineraryInfo'}>
               <ps.postTitle>{post.destination}</ps.postTitle>
               <ps.postPeriod>
-                {post.startDate}~{post.endData}
+                {post.startDate}~{post.endDate}
               </ps.postPeriod>
               <ps.postPeriod>현재 {post.personnel}명</ps.postPeriod>
             </ps.postContent>

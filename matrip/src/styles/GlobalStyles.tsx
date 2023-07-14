@@ -155,6 +155,7 @@ export const MainContainer = styled.div`
 export const MainBox = styled.div`
   max-width: 600px;
   width: 90%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -164,10 +165,9 @@ export const MainBox = styled.div`
   }
 `;
 
-
 export const PageName = styled.div`
   width: 80%;
   margin-top: 15px;
   font-weight: 800;
   font-size: 22px;
-`
+`;
