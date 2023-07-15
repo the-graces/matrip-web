@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { FaCarSide } from 'react-icons/fa';
+import {FaCarSide} from 'react-icons/fa';
 
 const LoadingIndicatorContainer = styled.div`
   display: flex;
@@ -15,6 +15,8 @@ const LoadingIndicatorContainer = styled.div`
   height: 50px;
   border-radius: 10px;
 `;
+
+
 
 const move = keyframes`
   0% {
@@ -38,13 +40,12 @@ const LoadText = styled.div`
   font-weight: bold;
   font-size: 20px;
 `;
-`;
 
 const LoadingIncdicator = () => {
   return (
     <LoadingIndicatorContainer>
       <Loader>
-        <FaCarSide size={50} />
+        <FaCarSide size={50}/> 
       </Loader>
       <LoadText>LOADING...</LoadText>
     </LoadingIndicatorContainer>

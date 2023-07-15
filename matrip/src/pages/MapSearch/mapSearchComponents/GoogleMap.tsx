@@ -10,6 +10,8 @@ import { performReverseGeocode } from './geocode';
 
 import * as ms from '../mapPageStyle';
 
+
+
 interface GoogleMapComponentProps {
   zoom: number;
   center: { lat: number; lng: number };
@@ -18,27 +20,29 @@ interface GoogleMapComponentProps {
   // markers: { lat: number; lng: number };
 }
 
+
 const GoogleMapComponent: React.FC<GoogleMapComponentProps> = ({
   zoom,
-  center
+  center,
   // markers
 }) => {
   const [mapCenter, setMapCenter] = useState(center);
   const [searchBox, setSearchBox] = useState<google.maps.places.SearchBox>();
 
   //우클릭한 위치에 대한 정보
-  const [clickedLocation, setClickedLocation] =
-    useState<google.maps.LatLngLiteral>();
+  const [clickedLocation, setClickedLocation] = useState<google.maps.LatLngLiteral>();
   const [clickedAddress, setClickedAddress] = useState<string>('');
 
   const inputRef = useRef<HTMLInputElement | null>(null);
 
-  // 지도 우클릭하면 바뀌는 위치 정보를 검색창에도 반영
+  // 지도 우클릭하면 바뀌는 위치 정보를 검색창에도 반영 
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.value = clickedAddress;
     }
   }, [clickedAddress]);
+
+
 
   //StandaloneSearchBox 컴포넌트의 인스턴스를 참조
   const onLoad = (ref: google.maps.places.SearchBox) => {
@@ -55,6 +59,8 @@ const GoogleMapComponent: React.FC<GoogleMapComponentProps> = ({
     streetViewControl: false,
     styles: ms.customStyles
   };
+
+
 
   /**
    * 위치 검색에 대한 onChange함수
@@ -168,7 +174,7 @@ const GoogleMapComponent: React.FC<GoogleMapComponentProps> = ({
           <h3>FOR DEV : 지도위에 우클릭하시면 됩니당</h3>
           <h1>{clickedAddress}</h1>
         </div>
-      )}
+      }
     </>
   );
 };

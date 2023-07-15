@@ -11,47 +11,48 @@ export const MainContainer = styled.div`
 `;
 
 export const postBox = styled.div`
-  width: 580px;
+  width: 100%;
   height: 180px;
-  padding: 10px;
   display: flex;
+  align-items: center;
+  border-bottom: solid #c5c5c5 1px;
   position: relative;
 `;
 
 export const profileBox = styled(Link)`
   padding: 0 10px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
 `;
 
 export const profileImgBox = styled.div`
   width: 160px;
   height: 160px;
+  margin-right: 30px;
 `;
 
 export const profileImg = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  justify-content: center;
-  align-items: center;
   border-radius: 20%;
+`;
+
+export const Nickname = styled.h4`
+  font-size: 12px;
+  font-weight: 600;
+  margin: 0;
 `;
 
 export const postContent = styled(Link)`
   color: #000;
-  height: 160px;
-  padding: 10px;
-  justify-content: center;
-  align-items: center;
-  top: 50;
+  text-decoration: none;
 `;
 
 export const postTitle = styled.div`
   font-size: 18px;
   font-weight: 800;
-  margin-top: 10px;
   margin-bottom: 20px;
 `;
 
@@ -59,20 +60,6 @@ export const postPeriod = styled.div`
   font-size: 16px;
   margin-bottom: 10px;
   color: gray;
-`;
-
-export const postPersonKing = styled.div`
-  bottom: 15px;
-  right: 15px;
-  position: absolute;
-`;
-
-export const postPeriodCount = styled.div`
-  font-size: 20px;
-  font-weight: 600;
-  align-items: center;
-  width: 100%;
-  color: #000000;
 `;
 
 export const postDibsBtn = styled.div`
@@ -84,7 +71,6 @@ export const PostButton = styled.div`
   width: 100%;
   display: flex;
   border-radius: 40px;
-  justify-content: center;
   margin: auto;
   margin-top: 15px;
   gap: 20px;
@@ -93,20 +79,22 @@ export const PostButton = styled.div`
 export const PostButtonL = styled.div`
   width: 162px;
   height: 42px;
-  padding-bottom: 14px;
+  padding-bottom: 18px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background-color: #056676;
   color: white;
   border-radius: 16px 16px 0px 0px;
   justify-content: center;
 `;
 
-export const PostButtonR =  styled(Link)`
+export const PostButtonR = styled.div`
   width: 162px;
   height: 42px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background-color: #5eaaa8;
   color: white;
   border-radius: 16px;
@@ -115,7 +103,7 @@ export const PostButtonR =  styled(Link)`
 
 export const ApplicationBackGround = styled.div`
   width: 100%;
-  border-top: 1px solid #056676;
+  border-top: 2px solid #056676;
 `;
 
 export const ManagementBtn = styled.div`
@@ -149,4 +137,3 @@ export const ManagementBtnR = styled.button`
   border-radius: 100%;
   justify-content: center;
 `;
-

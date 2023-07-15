@@ -5,8 +5,8 @@ import ReactCrop, {
   makeAspectCrop,
   Crop,
   PixelCrop,
-} from 'react-image-crop'
-import 'react-image-crop/dist/ReactCrop.css'
+} from 'react-image-crop';
+import 'react-image-crop/dist/ReactCrop.css';
 
 import * as uis from './uploadImageStyle';
 
@@ -16,30 +16,31 @@ import { canvasPreview } from './canvasPreview';
 import { useDebounceEffect } from './useDebounceEffect';
 import { useIconClickHandler } from '../../hooks/useIconClickHandler';
 
-import { AiFillCloseCircle } from 'react-icons/ai'
-import LoadingIncdicator from '../../components/LoadingIncdicator'
+import { AiFillCloseCircle } from 'react-icons/ai';
+import LoadingIncdicator from '../../components/LoadingIncdicator';
 
 
 // crop ratio 미리 설정
 function centerAspectCrop(
   mediaWidth: number,
   mediaHeight: number,
-  aspect: number
+  aspect: number,
 ) {
   return centerCrop(
     makeAspectCrop(
       {
         unit: '%',
-        width: 90
+        width: 90,
       },
       aspect,
       mediaWidth,
-      mediaHeight
+      mediaHeight,
     ),
     mediaWidth,
     mediaHeight,
-  )
+  );
 }
+
 
 // CropComponentsProps 인터페이스
 interface CropComponentsProps {
@@ -50,11 +51,7 @@ interface CropComponentsProps {
   imgdata: string;
 }
 
-const UploadImg: React.FC<CropComponentsProps> = ({
-  sendimg,
-  close,
-  imgdata
-}) => {
+const UploadImg: React.FC<CropComponentsProps> = ({ sendimg, close, imgdata }) => {
   // Loading indicator 상태
   const [loading, setLoading] = useState<boolean>(false);
   // canvas ref 참조
@@ -69,9 +66,9 @@ const UploadImg: React.FC<CropComponentsProps> = ({
   const ASPECT = 1 / 1;
 
   // useIconClickHandler
-  const handleClose = () => {
+  const handleClose = (() => {
     close(false);
-  })
+  });
 
   function onImageLoad(e: React.SyntheticEvent<HTMLImageElement>) {
     if (ASPECT) {
@@ -81,7 +78,7 @@ const UploadImg: React.FC<CropComponentsProps> = ({
   }
 
   /**
-   * 자른 이미지 다운로드
+   * 자른 이미지 다운로드 
    * => s3에 업로드로 변경
    */
   async function onDownloadCropClick() {
@@ -100,7 +97,7 @@ const UploadImg: React.FC<CropComponentsProps> = ({
         Bucket: bucketName as string,
         Key: filename,
         Body: blob,
-        ContentType: 'image/jpeg'
+        ContentType: 'image/jpeg',
       };
       // console.log(uploadParams)
       try {
@@ -115,7 +112,7 @@ const UploadImg: React.FC<CropComponentsProps> = ({
     });
   }
 
-  // crop 영역 선택시 debounce
+  // crop 영역 선택시 debounce 
   useDebounceEffect(
     async () => {
       if (
@@ -130,12 +127,12 @@ const UploadImg: React.FC<CropComponentsProps> = ({
           completedCrop,
           SCALE,
           ROTATE,
-        )
+        );
       }
     },
     500,
     [completedCrop, SCALE, ROTATE],
-  )
+  );
 
   return (
     <uis.EditImageCtnr>
@@ -146,27 +143,26 @@ const UploadImg: React.FC<CropComponentsProps> = ({
             onClick={handleClose}
             style={{marginLeft:'10px'}}
           /> */}
-          <uis.SaveImgBtn onClick={handleClose}>취소</uis.SaveImgBtn>
+          <uis.SaveImgBtn onClick={handleClose} >취소</uis.SaveImgBtn>
           <uis.SaveImgBtn onClick={onDownloadCropClick}>저장</uis.SaveImgBtn>
         </uis.EditImgHeader>
       </uis.CropControl>
-      {loading && <LoadingIncdicator />}
+      {loading &&
+        <LoadingIncdicator />
+      }
       {imgdata && (
         <ReactCrop
           crop={crop}
           onChange={(_, percentCrop) => setCrop(percentCrop)}
           onComplete={(c) => setCompletedCrop(c)}
           aspect={ASPECT}
-          style={{ width: '90%' }}
+          style={{width:'90%'}}
         >
           <img
             ref={imgRef}
-            alt='Crop me'
+            alt="Crop me"
             src={imgdata}
-            style={{
-              transform: `scale(${SCALE}) rotate(${ROTATE}deg)`,
-              width: '600px'
-            }}
+            style={{ transform: `scale(${SCALE}) rotate(${ROTATE}deg)`, width: '600px' }}
             onLoad={onImageLoad}
           />
         </ReactCrop>
@@ -180,7 +176,7 @@ const UploadImg: React.FC<CropComponentsProps> = ({
                 border: '1px solid black',
                 objectFit: 'contain',
                 width: completedCrop.width,
-                height: completedCrop.height
+                height: completedCrop.height,
               }}
             />
           </div>
