@@ -19,6 +19,10 @@ const getTitle = (location: string) => {
     title = '지도';
   } else if (location === 'friends') {
     title = '친구';
+  } else if (location === 'login') {
+    title = '로그인';
+  } else if (location === 'signup') {
+    title = '회원가입';
   } else {
     title = '';
   }

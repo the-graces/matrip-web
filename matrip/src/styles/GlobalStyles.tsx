@@ -136,9 +136,9 @@ body{
   background: ${({ theme }: { theme: any }) => theme.bgColor};
   color:${({ theme }: { theme: any }) => theme.textColor};
 }
-button{
-  border: solid ${({ theme }: { theme: any }) => theme.borderColor} 1px;
-}
+// button{
+//   border: solid ${({ theme }: { theme: any }) => theme.borderColor} 1px;
+// }
 `;
 
 // 전체 화면 컨테이너
@@ -165,7 +165,6 @@ export const MainBox = styled.div`
     width: 600px;
   }
 `;
-
 
 export const PageName = styled.div`
   width: 80%;

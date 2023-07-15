@@ -16,6 +16,7 @@ import GlobalFonts from './styles/fonts';
 import { GlobalStyle } from './styles/GlobalStyles';
 import { lightTheme } from './styles/theme/theme';
 import Management from './pages/Management';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -23,8 +24,10 @@ function App() {
       <GlobalFonts />
       <GlobalStyle theme={lightTheme} />
       <Routes>
-        <Route path='/' element={<Home/>}/>;
-        <Route path='/treipSearch' element={<Main />} />
+
+        <Route path='/' element={<Main />} />
+        <Route path='/login' element={<Login />} />
+
         <Route path='/friendSearch' element={<FriendSearch />} />
         <Route path='/itineraryInfo' element={<ItineraryInfo />} />
         <Route path='/userProfile' element={<UserProfile />} />
@@ -33,7 +36,7 @@ function App() {
         <Route path='/Dibs' element={<Dibs />} />
         <Route path='/mapSearch' element={<MapSearch />} />
         <Route path='/management' element={<Management />} />
-        <Route path="/*" element={<NotFound />} />
+        <Route path='/*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
