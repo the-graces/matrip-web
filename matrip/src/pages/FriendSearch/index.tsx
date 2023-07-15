@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import * as fsc from './friendSearchStyle';
 import * as gs from '../../styles/GlobalStyles';
+import { HiMiniMagnifyingGlass } from 'react-icons/hi2';
 import { fdata } from '../../data/userdata';
+import Header from '../../components/Header';
+import UserBox from './UserBox';
 
 const FriendSearch: React.FC = () => {
   const [searchInput, setSearchInput] = useState('');
@@ -14,35 +17,42 @@ const FriendSearch: React.FC = () => {
     setSearchInput(e.target.value.toLowerCase());
   };
 
+  const handleSearch = () => {
+    // setSearchInput(input);
+  };
+
   return (
     <gs.MainContainer>
+      <Header edit={true} />
       <gs.MainBox>
-        <fsc.SearchInput
-          type='search'
-          placeholder='검색어를 입력해주세요.'
-          id='searchInput'
-          value={searchInput}
-          onChange={getValue}
-        />
-        {searchInput && (
+        <fsc.SearchInputBox>
+          <fsc.SearchInput
+            type='search'
+            placeholder='이름, 친구 코드'
+            id='searchInput'
+            value={searchInput}
+            onChange={getValue}
+          />
+          <fsc.SearchBtn
+            className='searchIcon'
+            type='submit'
+            onClick={handleSearch}
+          >
+            <HiMiniMagnifyingGlass size='24' color='#9C9C9C' />
+          </fsc.SearchBtn>
+        </fsc.SearchInputBox>
+        {!searchInput && (
           <fsc.SearchResultArea>
             {filteredFdata.length === 0 ? (
               <p>올바른 닉네임을 입력해주세요!</p>
             ) : (
               filteredFdata.map((friend, index) => (
-                <fsc.SearchResultItem key={index}>
-                  <fsc.SearchResultLeft>
-                    <fsc.SearchResultImgCtnr>
-                      <fsc.SearchResultImg src={friend.imgurl} />
-                    </fsc.SearchResultImgCtnr>
-                    <fsc.SearchResultNickname>
-                      {friend.nick}
-                    </fsc.SearchResultNickname>
-                  </fsc.SearchResultLeft>
-                  <fsc.SearchResultRight>
-                    <fsc.SearchResultId>{friend.id}</fsc.SearchResultId>
-                  </fsc.SearchResultRight>
-                </fsc.SearchResultItem>
+                <UserBox
+                  key={index}
+                  imgUrl={friend.imgurl}
+                  nick={friend.nick}
+                  code={friend.id}
+                />
               ))
             )}
           </fsc.SearchResultArea>
