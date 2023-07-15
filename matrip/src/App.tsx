@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import Main from './pages/Main';
+import ItinerarySearch from './pages/ItinerarySearch';
 import FriendSearch from './pages/FriendSearch';
 import ItineraryInfo from './pages/ItineraryInfo';
 import UserProfile from './pages/UserProfile';
@@ -15,6 +15,7 @@ import GlobalFonts from './styles/fonts';
 import { GlobalStyle } from './styles/GlobalStyles';
 import { lightTheme } from './styles/theme/theme';
 import Management from './pages/Management';
+import Management from './pages/Management';
 import Login from './pages/Login';
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
       <GlobalFonts />
       <GlobalStyle theme={lightTheme} />
       <Routes>
-        <Route path='/' element={<Main />} />
+        <Route path='/ItinerarySearch' element={<ItinerarySearch />} />
         <Route path='/login' element={<Login />} />
         <Route path='/friendSearch' element={<FriendSearch />} />
         <Route path='/itineraryInfo' element={<ItineraryInfo />} />
@@ -33,7 +34,8 @@ function App() {
         <Route path='/Dibs' element={<Dibs />} />
         <Route path='/mapSearch' element={<MapSearch />} />
         <Route path='/management' element={<Management />} />
-        <Route path='/*' element={<NotFound />} />
+        <Route path='/management' element={<Management />} />
+        <Route path="/*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

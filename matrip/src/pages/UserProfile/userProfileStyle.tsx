@@ -8,7 +8,7 @@ export const ProfileCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   margin-top: 15px;
   margin-bottom: 20px;
 `;
@@ -22,7 +22,6 @@ export const ImgCtnr = styled.div<{ $isEditable: boolean }>`
   position: relative;
   margin: 0px 0px;
   overflow: hidden;
-  
 `;
 
 export const Img = styled.img`
@@ -33,7 +32,7 @@ export const Img = styled.img`
   right: 0;
   bottom: 0;
   width: 100%;
-  height: 100%;  
+  height: 100%;
 `;
 
 export const EditImg = styled.div`

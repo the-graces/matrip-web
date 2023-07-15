@@ -154,6 +154,7 @@ export const MainContainer = styled.div`
 export const MainBox = styled.div`
   max-width: 600px;
   width: 90%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
