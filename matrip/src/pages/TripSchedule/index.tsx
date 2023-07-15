@@ -19,6 +19,7 @@ const TripSchedule: React.FC = () => {
               <iss.profileImg src={post.imgurl} alt='유저 프로필' />
             </iss.profileImgBox>
             {/* <iss.Nickname>{post.nick}</iss.Nickname> */}
+            {/* <iss.Nickname>{post.nick}</iss.Nickname> */}
           </iss.profileBox>
           <iss.postContent to={'/itineraryInfo'}>
             <iss.postTitle>{post.destination}</iss.postTitle>
@@ -29,6 +30,7 @@ const TripSchedule: React.FC = () => {
           </iss.postContent>
         </iss.postBox>
 
+        <iss.wantList>찜 목록</iss.wantList>
         <iss.wantList>찜 목록</iss.wantList>
         <iss.userList>
           <UserList />

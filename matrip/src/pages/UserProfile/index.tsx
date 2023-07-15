@@ -45,6 +45,7 @@ const UserProfile: React.FC = () => {
   //로컬에서 불러온 이미지
   const [localimg, setLocalImg] = useState<string>('');
 
+
   // 이미지 선택창 열기
   const openImgFile = () => {
     onUploadButtonClick();
@@ -68,7 +69,7 @@ const UserProfile: React.FC = () => {
       // setCrop(undefined)
       const reader = new FileReader();
       reader.addEventListener('load', () =>
-        setLocalImg(reader.result?.toString() || '')
+        setLocalImg(reader.result?.toString() || ''),
       );
       reader.readAsDataURL(e.target.files[0]);
     }
@@ -97,6 +98,10 @@ const UserProfile: React.FC = () => {
   const handleSubmit = () => {
     console.log('handle submit');
   };
+
+
+
+
 
   // 임시
   if (!pickedImg) {

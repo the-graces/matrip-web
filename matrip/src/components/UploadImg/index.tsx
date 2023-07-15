@@ -4,9 +4,9 @@ import ReactCrop, {
   centerCrop,
   makeAspectCrop,
   Crop,
-  PixelCrop
-} from 'react-image-crop';
-import 'react-image-crop/dist/ReactCrop.css';
+  PixelCrop,
+} from 'react-image-crop'
+import 'react-image-crop/dist/ReactCrop.css'
 
 import * as uis from './uploadImageStyle';
 
@@ -16,8 +16,9 @@ import { canvasPreview } from './canvasPreview';
 import { useDebounceEffect } from './useDebounceEffect';
 import { useIconClickHandler } from '../../hooks/useIconClickHandler';
 
-import { AiFillCloseCircle } from 'react-icons/ai';
-import LoadingIncdicator from '../../components/LoadingIncdicator';
+import { AiFillCloseCircle } from 'react-icons/ai'
+import LoadingIncdicator from '../../components/LoadingIncdicator'
+
 
 // crop ratio 미리 설정
 function centerAspectCrop(
@@ -36,8 +37,8 @@ function centerAspectCrop(
       mediaHeight
     ),
     mediaWidth,
-    mediaHeight
-  );
+    mediaHeight,
+  )
 }
 
 // CropComponentsProps 인터페이스
@@ -70,7 +71,7 @@ const UploadImg: React.FC<CropComponentsProps> = ({
   // useIconClickHandler
   const handleClose = () => {
     close(false);
-  };
+  })
 
   function onImageLoad(e: React.SyntheticEvent<HTMLImageElement>) {
     if (ASPECT) {
@@ -128,13 +129,13 @@ const UploadImg: React.FC<CropComponentsProps> = ({
           previewCanvasRef.current,
           completedCrop,
           SCALE,
-          ROTATE
-        );
+          ROTATE,
+        )
       }
     },
     500,
-    [completedCrop, SCALE, ROTATE]
-  );
+    [completedCrop, SCALE, ROTATE],
+  )
 
   return (
     <uis.EditImageCtnr>

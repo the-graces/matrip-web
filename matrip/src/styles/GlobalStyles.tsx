@@ -35,12 +35,10 @@ s,
 samp,
 small,
 strike,
-strong,
 sub,
 sup,
 tt,
 var,
-b,
 u,
 i,
 center,
@@ -138,16 +136,17 @@ body{
   background: ${({ theme }: { theme: any }) => theme.bgColor};
   color:${({ theme }: { theme: any }) => theme.textColor};
 }
-button{
-  border: solid ${({ theme }: { theme: any }) => theme.borderColor} 1px;
-}
+// button{
+//   border: solid ${({ theme }: { theme: any }) => theme.borderColor} 1px;
+// }
 `;
 
 // 전체 화면 컨테이너
 export const MainContainer = styled.div`
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   font-family: Pretendard;
 `;
 
@@ -159,6 +158,7 @@ export const MainBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 30px;
 
   @media screen and (min-width: 600px) {
     width: 600px;
