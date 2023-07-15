@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import Main from './pages/Main';
+import ItinerarySearch from './pages/ItinerarySearch';
 import FriendSearch from './pages/FriendSearch';
 import ItineraryInfo from './pages/ItineraryInfo';
 import UserProfile from './pages/UserProfile';
@@ -24,7 +24,7 @@ function App() {
       <GlobalStyle theme={lightTheme} />
       <BottomNav />
       <Routes>
-        <Route path='/' element={<Main />} />
+        <Route path='/ItinerarySearch' element={<ItinerarySearch />} />
         <Route path='/friendSearch' element={<FriendSearch />} />
         <Route path='/itineraryInfo' element={<ItineraryInfo />} />
         <Route path='/userProfile' element={<UserProfile />} />

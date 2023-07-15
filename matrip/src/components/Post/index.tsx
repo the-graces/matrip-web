@@ -17,12 +17,12 @@ const Post: React.FC<PostProps> = ({ searchInput }) => {
     };
 
     const callback: IntersectionObserverCallback = (entries) => {
-      const targetElement = entries[0].target;
-      if (targetElement instanceof HTMLElement && entries[0].isIntersecting) {
+      const targetElement = entries[0].target as HTMLElement;
+      if (targetElement && entries[0].isIntersecting) {
         const filteredData = postdata.filter((post: any) =>
           post.destination.includes(searchInput)
         );
-        if (filteredData.length >= 0) {
+        if (filteredData.length > 0) {
           loadMoreData();
         }
       }

@@ -1,4 +1,10 @@
-import React, { useState, MouseEvent, MouseEventHandler, useEffect, useRef } from 'react';
+import React, {
+  useState,
+  MouseEvent,
+  MouseEventHandler,
+  useEffect,
+  useRef
+} from 'react';
 
 import * as upc from './userProfileStyle';
 import * as gs from '../../styles/GlobalStyles';
@@ -23,7 +29,6 @@ interface UserInfo {
   birth: string;
 }
 
-
 const UserProfile: React.FC = () => {
   // 임시
   const prf: UserInfo = fdata[0];
@@ -38,13 +43,12 @@ const UserProfile: React.FC = () => {
   // 블러 처리된 이미지 영역
   const imageInputRef = useRef<HTMLInputElement>(null);
   //로컬에서 불러온 이미지
-  const [localimg, setLocalImg] = useState<string>('')
-
+  const [localimg, setLocalImg] = useState<string>('');
 
   // 이미지 선택창 열기
-  const openImgFile = (() => {
+  const openImgFile = () => {
     onUploadButtonClick();
-  });
+  };
 
   // 숨겨져 있는 input 버튼 ref 클릭
   async function onUploadButtonClick() {
@@ -55,25 +59,25 @@ const UserProfile: React.FC = () => {
 
   // crop modal 열기
   const handleOpenCropImage = useIconClickHandler(() => {
-    setOpenCropImage(true)
+    setOpenCropImage(true);
   });
 
   // 선택한 이미지에 대한 처리
   function onSelectFile(e: React.ChangeEvent<HTMLInputElement>) {
     if (e.target.files && e.target.files.length > 0) {
       // setCrop(undefined)
-      const reader = new FileReader()
+      const reader = new FileReader();
       reader.addEventListener('load', () =>
-        setLocalImg(reader.result?.toString() || ''),
-      )
-      reader.readAsDataURL(e.target.files[0])
+        setLocalImg(reader.result?.toString() || '')
+      );
+      reader.readAsDataURL(e.target.files[0]);
     }
-    setOpenCropImage(true)
+    setOpenCropImage(true);
   }
 
   // 유저 정보 수정가능 여부 상태 변경
   const handleEditUserInfo = useIconClickHandler(() => {
-    setIsEditable(!isEditable)
+    setIsEditable(!isEditable);
   });
 
   // 받아온 이미지 s3 url setPickedImg
@@ -86,56 +90,53 @@ const UserProfile: React.FC = () => {
     e: React.ChangeEvent<HTMLInputElement>,
     fieldName: keyof UserInfo
   ) => {
-    setUserInfo({ ...userInfo, [fieldName]: e.target.value })
-  }
+    setUserInfo({ ...userInfo, [fieldName]: e.target.value });
+  };
 
   // 저장된 값 서버로 POST
   const handleSubmit = () => {
-    console.log('handle submit')
-  }
-
-
-
-
+    console.log('handle submit');
+  };
 
   // 임시
   if (!pickedImg) {
-    setPickedImg(prf.imgurl)
+    setPickedImg(prf.imgurl);
   }
 
   return (
     <gs.MainContainer>
       <gs.MainBox>
-        <gs.PageName>
-          내 프로필
-        </gs.PageName>
-        {openCropImage &&
+        <gs.PageName>내 프로필</gs.PageName>
+        {openCropImage && (
           <UploadImg
             sendimg={handleImageUrlFromCrop}
             close={setOpenCropImage}
             imgdata={localimg}
           />
-        }
+        )}
 
         {/* 유저 프로필 카드 */}
         <upc.ProfileCard>
           {/* 유저 이미지 컨테이너 */}
           <upc.ImgCtnr $isEditable={isEditable}>
             <upc.Img src={pickedImg} />
-            {!isEditable &&
-              <upc.EditImg
-                onClick={openImgFile}
-              >
+            {!isEditable && (
+              <upc.EditImg onClick={openImgFile}>
                 {/* 안보이게 할 input btn */}
-                <input type="file" accept="image/*" onChange={onSelectFile} ref={imageInputRef} hidden />
+                <input
+                  type='file'
+                  accept='image/*'
+                  onChange={onSelectFile}
+                  ref={imageInputRef}
+                  hidden
+                />
                 <BsFillImageFill
                   size={50}
                   color='#fff'
                   onClick={handleOpenCropImage}
                 />
               </upc.EditImg>
-            }
-
+            )}
           </upc.ImgCtnr>
 
           {/* 유저 정보 컨테이너 (form) */}
@@ -147,15 +148,11 @@ const UserProfile: React.FC = () => {
                 onChange={(e: any) => handleInfoChange(e, 'id')}
                 readOnly={isEditable}
               ></upc.IdText>
-              {isEditable ?
-                <AiFillEdit
-                  onClick={handleEditUserInfo}
-                />
-                :
-                <AiFillCheckCircle
-                  onClick={handleEditUserInfo}
-                />
-              }
+              {isEditable ? (
+                <AiFillEdit onClick={handleEditUserInfo} />
+              ) : (
+                <AiFillCheckCircle onClick={handleEditUserInfo} />
+              )}
             </upc.IdCtnr>
 
             <upc.EmailCtnr>
@@ -178,7 +175,6 @@ const UserProfile: React.FC = () => {
           <div>친구 목록</div>
           <div>친구 목록</div>
         </upc.ProfileCard>
-
       </gs.MainBox>
     </gs.MainContainer>
   );

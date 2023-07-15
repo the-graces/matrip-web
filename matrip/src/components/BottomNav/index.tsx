@@ -14,7 +14,7 @@ function BottomNav() {
         <NavBtn to={'/'} onClick={() => setIsActive(1)}>
           <BiHomeAlt size='30' color={isActive === 1 ? '#5EAAA8' : '#000'} />
         </NavBtn>
-        <NavBtn to={'/tripSchedule'} onClick={() => setIsActive(2)}>
+        <NavBtn to={'/ItinerarySearch'} onClick={() => setIsActive(2)}>
           <HiMiniMagnifyingGlass
             size='30'
             color={isActive === 2 ? '#5EAAA8' : '#000'}

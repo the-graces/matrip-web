@@ -8,10 +8,10 @@ export const ProfileCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   margin-top: 15px;
   margin-bottom: 20px;
-`
+`;
 
 // 왜 이미지 넓이가 달라짐?????????
 export const ImgCtnr = styled.div<{ $isEditable: boolean }>`
@@ -22,7 +22,6 @@ export const ImgCtnr = styled.div<{ $isEditable: boolean }>`
   position: relative;
   margin: 0px 0px;
   overflow: hidden;
-  
 `;
 
 export const Img = styled.img`
@@ -33,26 +32,25 @@ export const Img = styled.img`
   right: 0;
   bottom: 0;
   width: 100%;
-  height: 100%;  
+  height: 100%;
 `;
 
 export const EditImg = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    z-index: 999;
-    object-fit: cover;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%; 
-    background-color: #ffffff;
-    background-color: rgba( 0, 0, 0, 0.5 );
-`
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 999;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.5);
+`;
 
 export const InfoCtnr = styled.div<{ $isEditable: boolean }>`
   display: flex;
@@ -61,9 +59,7 @@ export const InfoCtnr = styled.div<{ $isEditable: boolean }>`
   margin-top: 13px;
   height: ${({ $isEditable }) => ($isEditable ? '150px' : '270px')};
   transition: height 0.3s;
-`
-
-
+`;
 
 export const IdCtnr = styled.div`
   margin: 10px 0px;
