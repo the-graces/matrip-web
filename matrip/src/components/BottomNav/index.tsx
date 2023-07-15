@@ -14,13 +14,13 @@ function BottomNav() {
         <NavBtn to={'/'} onClick={() => setIsActive(1)}>
           <BiHomeAlt size='30' color={isActive === 1 ? '#5EAAA8' : '#000'} />
         </NavBtn>
-        <NavBtn to={'/ItinerarySearch'} onClick={() => setIsActive(2)}>
+        <NavBtn to={'/tripSchedule'} onClick={() => setIsActive(2)}>
           <HiMiniMagnifyingGlass
             size='30'
             color={isActive === 2 ? '#5EAAA8' : '#000'}
           />
         </NavBtn>
-        <NavBtn to={'/management'} onClick={() => setIsActive(3)}>
+        <NavBtn to={'/itineraryInfo'} onClick={() => setIsActive(3)}>
           <BsGrid size='30' color={isActive === 3 ? '#5EAAA8' : '#000'} />
         </NavBtn>
         <NavBtn to={'/userProfile'} onClick={() => setIsActive(4)}>
@@ -40,8 +40,7 @@ const NavContainer = styled.div`
   background-color: #fff;
   position: fixed;
   bottom: 0;
-  border-top: solid #bebebe 1px;
-  z-index: 2;
+  border-top: solid #dcdcdc 1px;
 `;
 
 const NavWrap = styled.nav`

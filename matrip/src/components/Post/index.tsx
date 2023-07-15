@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import React, { useEffect, useRef, useState } from 'react';
 import { postdata } from '../../data/postdata';
 import * as ps from './postStyle';
 import DibsBtn from '../DibsBtn';
@@ -15,18 +14,13 @@ const Post: React.FC<PostProps> = ({ searchInput }) => {
   useEffect(() => {
     const options = {
       threshold: 0.5
-      threshold: 0.5
     };
 
     const callback: IntersectionObserverCallback = (entries) => {
-      const targetElement = entries[0].target as HTMLElement;
-      if (targetElement && entries[0].isIntersecting) {
-        const filteredData = postdata.filter((post: any) =>
-          post.destination.includes(searchInput)
-        );
-        if (filteredData.length > 0) {
-          loadMoreData();
-        }
+      const target = entries[0].target;
+      if (target instanceof HTMLElement && entries[0].isIntersecting) {
+        loadMoreData();
+        loadMoreData();
       }
     };
 
@@ -43,27 +37,27 @@ const Post: React.FC<PostProps> = ({ searchInput }) => {
         observer.unobserve(currentTarget);
       }
     };
-  }, [searchInput]);
+  }, []);
 
   const loadMoreData = () => {
     const dummyData = [
       {
         id: 4,
-        destination: '더미 제주도',
+        destination: '더미 도시 4',
         startDate: '2023-07-15',
         endDate: '2023-07-20',
         personnel: 3
       },
       {
         id: 5,
-        destination: '더미 강릉',
+        destination: '더미 도시 5',
         startDate: '2023-07-18',
         endDate: '2023-07-25',
         personnel: 2
       },
       {
         id: 6,
-        destination: '더미 광주',
+        destination: '더미 도시 6',
         startDate: '2023-07-22',
         endDate: '2023-07-29',
         personnel: 4
@@ -91,19 +85,17 @@ const Post: React.FC<PostProps> = ({ searchInput }) => {
               <ps.profileImgBox>
                 <ps.profileImg src={post.imgurl} alt='유저 프로필' />
               </ps.profileImgBox>
-            </ps.profileBox>
 
+              {/* <ps.Nickname>{post.nick}</ps.Nickname> */}
+            </ps.profileBox>
 
             <ps.postContent to={'/itineraryInfo'}>
               <ps.postTitle>{post.destination}</ps.postTitle>
               <ps.postPeriod>
-                {post.startDate}~{post.endDate}
+                {post.startDate}~{post.endData}
               </ps.postPeriod>
               <ps.postPeriod>현재 {post.personnel}명</ps.postPeriod>
             </ps.postContent>
-            <ps.postDibsBtn>
-              <DibsBtn id={post.id} state={post.state} />
-            </ps.postDibsBtn>
             <ps.postDibsBtn>
               <DibsBtn id={post.id} state={post.state} />
             </ps.postDibsBtn>
