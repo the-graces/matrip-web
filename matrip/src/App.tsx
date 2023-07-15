@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Main from './pages/Main';
-import FriendSearch from './pages/FriendSearch';
+import MemberSearch from './pages/MemberSearch';
 import ItineraryInfo from './pages/ItineraryInfo';
 import UserProfile from './pages/UserProfile';
 import MapSearch from './pages/MapSearch';
@@ -25,7 +25,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Main />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/friendSearch' element={<FriendSearch />} />
+        <Route path='/memberSearch' element={<MemberSearch />} />
         <Route path='/itineraryInfo' element={<ItineraryInfo />} />
         <Route path='/userProfile' element={<UserProfile />} />
         <Route path='/tripSchedule' element={<TripSchedule />} />

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import * as fsc from './friendSearchStyle';
+import * as fsc from './memberSearchStyle';
 import * as gs from '../../styles/GlobalStyles';
 import { HiMiniMagnifyingGlass } from 'react-icons/hi2';
 import { fdata } from '../../data/userdata';
 import Header from '../../components/Header';
-import UserBox from './UserBox';
+import UserBox from './MemberBox';
 
-const FriendSearch: React.FC = () => {
+const MemberSearch: React.FC = () => {
   const [searchInput, setSearchInput] = useState('');
 
   const filteredFdata = fdata.filter((data: any) =>
@@ -23,7 +23,7 @@ const FriendSearch: React.FC = () => {
 
   return (
     <gs.MainContainer>
-      <Header edit={true} />
+      <Header edit={false} />
       <gs.MainBox>
         <fsc.SearchInputBox>
           <fsc.SearchInput
@@ -62,4 +62,4 @@ const FriendSearch: React.FC = () => {
   );
 };
 
-export default FriendSearch;
+export default MemberSearch;
