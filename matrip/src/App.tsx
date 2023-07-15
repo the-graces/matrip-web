@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
+import Home from './pages/Home';
 import Main from './pages/Main';
 import MemberSearch from './pages/MemberSearch';
 import ItineraryInfo from './pages/ItineraryInfo';

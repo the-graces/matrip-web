@@ -158,6 +158,7 @@ export const MainBox = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 30px 0 70px 0;
+  background-color: #f0f0f0;
 
   @media screen and (min-width: 600px) {
     width: 600px;
