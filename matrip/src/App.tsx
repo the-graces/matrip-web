@@ -11,12 +11,13 @@ import TripSchedule from './pages/TripSchedule';
 import Notificiation from './pages/Notification';
 import Dibs from './pages/Dibs';
 import NotFound from './pages/NotFound';
+import Management from './pages/Management';
+import Login from './pages/Login';
+import MemberDetail from './pages/MemberDetail';
 
 import GlobalFonts from './styles/fonts';
 import { GlobalStyle } from './styles/GlobalStyles';
 import { lightTheme } from './styles/theme/theme';
-import Management from './pages/Management';
-import Login from './pages/Login';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path='/' element={<Main />} />
         <Route path='/login' element={<Login />} />
         <Route path='/memberSearch' element={<MemberSearch />} />
+        <Route path='/member' element={<MemberDetail />} />
         <Route path='/itineraryInfo' element={<ItineraryInfo />} />
         <Route path='/userProfile' element={<UserProfile />} />
         <Route path='/tripSchedule' element={<TripSchedule />} />

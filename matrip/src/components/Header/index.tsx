@@ -17,8 +17,8 @@ const getTitle = (location: string) => {
     title = '알림';
   } else if (location === 'mapSearch') {
     title = '지도';
-  } else if (location === 'friendSearch') {
-    title = '친구';
+  } else if (location.includes('member')) {
+    title = '일행';
   } else if (location === 'login') {
     title = '로그인';
   } else if (location === 'signup') {

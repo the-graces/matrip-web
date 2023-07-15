@@ -10,7 +10,7 @@ type UserData = {
 
 function UserBox({ imgUrl, nick, code }: UserData) {
   return (
-    <UserBoxWrap to={'/friend'}>
+    <UserBoxWrap to={'/member'}>
       <ImgWrap>
         <UserImg src={imgUrl} alt='유저 프로필 사진' />
       </ImgWrap>

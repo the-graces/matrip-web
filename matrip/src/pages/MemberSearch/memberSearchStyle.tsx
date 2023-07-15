@@ -1,15 +1,21 @@
 import { styled } from 'styled-components';
 
-export const SearchInputBox = styled.div`
+export const SearchInputBox = styled.form`
   display: flex;
-  justify-content: space-around;
+  align-items: center;
   width: 100%;
 `;
 
+export const SearchIcon = styled.div`
+  position: absolute;
+  margin-left: 10px;
+`;
+
 export const SearchInput = styled.input`
-  width: 90%;
+  width: 100%;
   height: 40px;
-  padding-left: 15px;
+  font-size: 16px;
+  padding: 0 15px 0 40px;
   border-radius: 40px;
   border: 1px solid transparent;
   outline: none;
