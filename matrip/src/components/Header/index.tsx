@@ -15,10 +15,10 @@ const getTitle = (location: string) => {
   let title = '';
   if (location === 'notifications') {
     title = '알림';
-  } else if (location === 'map') {
+  } else if (location === 'mapSearch') {
     title = '지도';
-  } else if (location === 'friends') {
-    title = '친구';
+  } else if (location.includes('member')) {
+    title = '일행';
   } else if (location === 'login') {
     title = '로그인';
   } else if (location === 'signup') {
@@ -30,17 +30,29 @@ const getTitle = (location: string) => {
   return title;
 };
 
-function Header() {
+// 수정 페이지인지
+type IsEdit = {
+  edit: boolean;
+};
+
+function Header({ edit }: IsEdit) {
   const navigate = useNavigate();
   const page = useLocation().pathname.substring(1);
 
   return (
     <NavContainer>
       <NavWrap>
-        <BackBtn onClick={() => navigate(-1)}>
-          <BsArrowLeftShort size='24' />
-        </BackBtn>
-        <NavTitle>{getTitle(page)}</NavTitle>
+        <BackWrap>
+          <BackBtn onClick={() => navigate(-1)}>
+            <BsArrowLeftShort size='24' />
+          </BackBtn>
+          <NavTitle>{getTitle(page)}</NavTitle>
+        </BackWrap>
+        {edit && (
+          <div>
+            <CompleteBtn>완료</CompleteBtn>
+          </div>
+        )}
       </NavWrap>
     </NavContainer>
   );
@@ -60,9 +72,15 @@ const NavWrap = styled.nav`
   width: 90%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   @media screen and (min-width: 600px) {
     width: 600px;
   }
+`;
+
+const BackWrap = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 const NavTitle = styled.div`
@@ -74,6 +92,14 @@ const BackBtn = styled.button`
   border: none;
   background: none;
   padding: 0;
+`;
+
+const CompleteBtn = styled.button`
+  border: none;
+  background: none;
+  color: #056676;
+  font-size: 16px;
+  font-weight: 600;
 `;
 
 export default Header;

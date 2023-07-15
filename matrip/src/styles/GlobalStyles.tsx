@@ -148,7 +148,6 @@ export const MainContainer = styled.div`
   flex-direction: column;
   align-items: center;
   font-family: Pretendard;
-  
 `;
 
 // 그 안에 들어갈 내용을 감싸는 컨테이너
@@ -158,8 +157,8 @@ export const MainBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 30px;
-  background-color: #f0f0f0;
+  margin: 30px 0 70px 0;
+  // background-color: #f0f0f0;
 
   @media screen and (min-width: 600px) {
     width: 600px;

@@ -44,7 +44,7 @@ function Notification() {
 
   return (
     <gs.MainContainer>
-      <Header />
+      <Header edit={false} />
       <gs.MainBox>
         <ns.NotificationBox>
           <ns.NotificationTitleBox>

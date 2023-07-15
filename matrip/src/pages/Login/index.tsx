@@ -23,7 +23,7 @@ function Login() {
 
   return (
     <gs.MainContainer>
-      <Header />
+      <Header edit={false} />
       <gs.MainBox>
         <ls.LoginForm>
           <ls.InputBox>
