@@ -1,6 +1,7 @@
 import {styled} from 'styled-components';
 
 
+
 export const HomeHeader = styled.div`
     display: flex;
     width: 80%;
@@ -108,17 +109,25 @@ export const BookmarkBtn = styled.div`
 
 export const RecommedSliderWrapper = styled.div`
     width: 80%;
-    height: 250px;
-    overflow-x: scroll;
+    height: 260px;
+    overflow-x: hidden;
     position: relative;
+    
 `;
 
-export const RecommedSliderCtnr = styled.div`
+interface RecommedSliderCtnrProps {
+    sliderPosition: number;
+  }
+
+export const RecommedSliderCtnr = styled.div<RecommedSliderCtnrProps>`
     position: absolute;
     left: 0px;
     top: 0px;
     display: flex;
     flex-direction: row;
+
+    transform: ${(props) => `translateX(${-195 * props.sliderPosition}px)`};
+    transition: transform 0.5s ease;
 `;
 
 export const RecommedSliderCard = styled.div`
@@ -151,13 +160,48 @@ export const RecommedSliderCardImg = styled.img`
 export const RecommedSliderCardTextCtnr = styled.div`
     background-color: #fff;
     width: 100%;
-    height: 50px;
+    height: 60px;
     z-index: 999;
-    
     left: 10px;
     bottom: 15px;
     
-
     display: flex;
-    align-items: center;
+    
+    flex-direction: column;
+`;
+
+export const RecommendTextMain = styled.p`
+    font-size: 20px;
+    font-weight: 700;
+    margin: 9px 0px 3px 10px;
+`;
+
+export const RecommendTextSub = styled.div`
+    font-size: 7px;
+    color: grey;
+    margin: 5px 0px 3px 10px;
+`;
+
+export const SliderLeft= styled.button`
+    position:absolute;
+    left:0px; 
+    top: 105px;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-Index:9999;
+
+    height: 50px;
+    width: 50px;
+    border-radius: 100px;
+`;
+
+export const SliderRight= styled.button`
+    position:absolute;
+    right: 0px;
+    top: 105px;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-Index:9999;
+    
+    height: 50px;
+    width: 50px;
+    border-radius: 100px;
 `;
