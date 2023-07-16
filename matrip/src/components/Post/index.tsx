@@ -17,14 +17,10 @@ const Post: React.FC<PostProps> = ({ searchInput }) => {
     };
 
     const callback: IntersectionObserverCallback = (entries) => {
-      const targetElement = entries[0].target as HTMLElement;
-      if (targetElement && entries[0].isIntersecting) {
-        const filteredData = postdata.filter((post: any) =>
-          post.destination.includes(searchInput)
-        );
-        if (filteredData.length > 0) {
-          loadMoreData();
-        }
+      const target = entries[0].target;
+      if (target instanceof HTMLElement && entries[0].isIntersecting) {
+        loadMoreData();
+        loadMoreData();
       }
     };
 
@@ -41,7 +37,7 @@ const Post: React.FC<PostProps> = ({ searchInput }) => {
         observer.unobserve(currentTarget);
       }
     };
-  }, [searchInput]);
+  }, []);
 
   const loadMoreData = () => {
     const dummyData = [
