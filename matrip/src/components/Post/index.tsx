@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import React, { useEffect, useRef, useState } from 'react';
 import { postdata } from '../../data/postdata';
 import * as ps from './postStyle';
 import DibsBtn from '../DibsBtn';
@@ -14,7 +13,6 @@ const Post: React.FC<PostProps> = ({ searchInput }) => {
 
   useEffect(() => {
     const options = {
-      threshold: 0.5
       threshold: 0.5
     };
 
@@ -92,7 +90,6 @@ const Post: React.FC<PostProps> = ({ searchInput }) => {
                 <ps.profileImg src={post.imgurl} alt='유저 프로필' />
               </ps.profileImgBox>
             </ps.profileBox>
-
 
             <ps.postContent to={'/itineraryInfo'}>
               <ps.postTitle>{post.destination}</ps.postTitle>

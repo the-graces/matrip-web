@@ -38,7 +38,6 @@ const LoadText = styled.div`
   font-weight: bold;
   font-size: 20px;
 `;
-`;
 
 const LoadingIncdicator = () => {
   return (

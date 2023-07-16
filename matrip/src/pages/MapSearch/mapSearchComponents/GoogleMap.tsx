@@ -168,7 +168,7 @@ const GoogleMapComponent: React.FC<GoogleMapComponentProps> = ({
           <h3>FOR DEV : 지도위에 우클릭하시면 됩니당</h3>
           <h1>{clickedAddress}</h1>
         </div>
-      )}
+      }
     </>
   );
 };
