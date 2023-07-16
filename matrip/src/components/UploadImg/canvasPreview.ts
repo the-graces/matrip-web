@@ -7,10 +7,9 @@ export async function canvasPreview(
   canvas: HTMLCanvasElement,
   crop: PixelCrop,
   scale = 1,
-  rotate = 0,
+  rotate = 0
 ) {
   const ctx = canvas.getContext('2d');
-
   if (!ctx) {
     throw new Error('No 2d context');
   }
@@ -58,7 +57,7 @@ export async function canvasPreview(
     0,
     0,
     image.naturalWidth,
-    image.naturalHeight,
+    image.naturalHeight
   );
 
   ctx.restore();

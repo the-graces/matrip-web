@@ -14,17 +14,22 @@ import NotFound from './pages/NotFound';
 import Management from './pages/Management';
 import Login from './pages/Login';
 import MemberDetail from './pages/MemberDetail';
+import ItinerarySearch from './pages/ItinerarySearch';
 
 import GlobalFonts from './styles/fonts';
 import { GlobalStyle } from './styles/GlobalStyles';
 import { lightTheme } from './styles/theme/theme';
+import BottomNav from './components/BottomNav';
 
 function App() {
   return (
     <BrowserRouter>
       <GlobalFonts />
       <GlobalStyle theme={lightTheme} />
+      <BottomNav />
       <Routes>
+        <Route path='/login' element={<Login />} />
+        <Route path='/ItinerarySearch' element={<ItinerarySearch />} />
         <Route path='/' element={<Main />} />
         <Route path='/login' element={<Login />} />
         <Route path='/memberSearch' element={<MemberSearch />} />
