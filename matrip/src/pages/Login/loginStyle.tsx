@@ -64,3 +64,13 @@ export const GoogleIcon = styled.div`
   border: solid 1px #dcdcdc;
   border-radius: 50%;
 `;
+
+export const SubmitBtn = styled.button`
+  background-color: #056676;
+  border: solid 1px #056676;
+  border-radius: 35px;
+  width: 100%;
+  color: #fff;
+  height: 56px;
+  font-size: 18px;
+`;

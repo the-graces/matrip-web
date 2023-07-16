@@ -10,10 +10,11 @@ type FormInputProps = {
 function FormInput({ name, value, onChange }: FormInputProps) {
   return (
     <Input
-      type={name === 'password' ? 'password' : 'text'}
+      type={name.includes('password') ? 'password' : 'text'}
       name={name}
       value={value}
       onChange={onChange}
+      style={name === 'birth' ? { paddingLeft: '50px' } : {}}
     />
   );
 }
