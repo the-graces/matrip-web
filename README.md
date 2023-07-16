@@ -1,66 +1,46 @@
-# ✈️ matrip-web
-메이트립 웹 클라이언트 저장소
-<br>
-## 🚩 협업 규칙
-### Commit
-1. 하나의 커밋에는 하나의 작업만 들어가 있는게 좋습니다.
-2. 제목은 <b>type: 제목</b>으로 작성
-   <br>
-ex) feat: 로그인 기능 추가<br>
-   [type 참고](https://velog.io/@bgshin13/GoogleAngular-Commit-Convention)
-3. 커밋에 대한 설명은 자세하게 작성
-   <br>
-### Pull Request
-1. <b>develop</b>으로 pull request
-2. develop에서 작업하고 바로 커밋하지 않고 새로운 브랜치를 파서 작업, pull request
-3. pull request 제목도 커밋 제목과 동일한 방식으로 작성
-4. main으로 머지할 때는 모든 팀원들의 승인이 있어야 합니다.
+# Getting Started with Create React App
 
-### 코드 컨벤션
-1. 들여쓰기는 탭 사용
-2. var는 최대한 지양
-3. 변수와 함수 이름은 <b>카멜 케이스</b>를 사용
-4. 문장 종료시에는 <b>세미콜론(;)</b> 붙이기
-5. <b>쌍따옴표(")</b> 사용
-6. 한 줄 짜리 블록도 {}로 감싸고 줄바꿈
-   ```javascript
-   if (true){
-    ...
-   } else {
-    ...
-   }
-   ```
-7. 자식 컴포넌트가 없으면 항상 닫힘 태그 사용
-   ```javascript
-   //bad
-   <Foo className="stuff"></Foo>
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-   //good
-   <Foo className="stuff"/>
-   ```
-[더 많은 코드 컨벤션](https://ui.toast.com/fe-guide/ko_CODING-CONVENTION)
+## Available Scripts
 
-### 파일 구조
-1. Components나 Pages 관련 파일들은 파일별로 폴더를 만들고 index.tsx를 사용
-2. styles 안에는 전역으로 관리되는 스타일들 <br/>
-예시)
-```
-src/
-├── components/
-│   ├── Header/
-│   │   ├── index.tsx
-│   │   └── headerStyle.tsx
-│   │   └── ...
-│   └── ...
-├── pages/
-│   ├── Main/
-│   │   ├── index.tsx
-│   │   └── mainComponents/
-│   │   │   ├── ...
-│   │   └── ...
-│   └── ...
-├── styles/
-│   ├── GlobalStyles.tsx
-│   └── ...
-└── ...
-```
+In the project directory, you can run:
+
+### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
+
+### `npm test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
