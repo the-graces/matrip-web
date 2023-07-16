@@ -41,7 +41,7 @@ const Post: React.FC<PostProps> = ({ searchInput }) => {
         observer.unobserve(currentTarget);
       }
     };
-  }, []);
+  }, [searchInput]);
 
   const loadMoreData = () => {
     const dummyData = [
