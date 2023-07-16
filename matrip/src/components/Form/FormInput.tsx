@@ -23,6 +23,11 @@ const Input = styled.input`
   height: 40px;
   border-width: 0 0 1px 0;
   border-bottom-color: #9c9c9c;
+  font-size: 15px;
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 export default FormInput;
