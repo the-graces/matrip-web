@@ -48,13 +48,7 @@ export async function canvasPreview(
   ctx.scale(scale, scale);
   // 1) Move the center of the image to the origin (0,0)
   ctx.translate(-centerX, -centerY);
-  ctx.drawImage(
-    image,
-    0,
-    0,
-    image.naturalWidth,
-    image.naturalHeight
-  );
+  ctx.drawImage(image, 0, 0, image.naturalWidth, image.naturalHeight);
 
   ctx.restore();
 }

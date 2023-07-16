@@ -154,11 +154,11 @@ export const MainContainer = styled.div`
 export const MainBox = styled.div`
   max-width: 600px;
   width: 90%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 30px;
+  margin: 30px 0 70px 0;
+  // background-color: #f0f0f0;
 
   @media screen and (min-width: 600px) {
     width: 600px;

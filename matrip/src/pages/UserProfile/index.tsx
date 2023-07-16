@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  MouseEvent,
-  MouseEventHandler,
-  useEffect,
-  useRef
-} from 'react';
+import React, { useState, MouseEvent, MouseEventHandler, useEffect, useRef } from 'react';
 
 import * as upc from './userProfileStyle';
 import * as gs from '../../styles/GlobalStyles';
@@ -29,6 +23,7 @@ interface UserInfo {
   birth: string;
 }
 
+
 const UserProfile: React.FC = () => {
   // 임시
   const prf: UserInfo = fdata[0];
@@ -47,9 +42,9 @@ const UserProfile: React.FC = () => {
 
 
   // 이미지 선택창 열기
-  const openImgFile = () => {
+  const openImgFile = (() => {
     onUploadButtonClick();
-  };
+  });
 
   // 숨겨져 있는 input 버튼 ref 클릭
   async function onUploadButtonClick() {
@@ -111,37 +106,36 @@ const UserProfile: React.FC = () => {
   return (
     <gs.MainContainer>
       <gs.MainBox>
-        <gs.PageName>내 프로필</gs.PageName>
-        {openCropImage && (
+        <gs.PageName>
+          내 프로필
+        </gs.PageName>
+        {openCropImage &&
           <UploadImg
             sendimg={handleImageUrlFromCrop}
             close={setOpenCropImage}
             imgdata={localimg}
           />
-        )}
+        }
 
         {/* 유저 프로필 카드 */}
         <upc.ProfileCard>
           {/* 유저 이미지 컨테이너 */}
           <upc.ImgCtnr $isEditable={isEditable}>
             <upc.Img src={pickedImg} />
-            {!isEditable && (
-              <upc.EditImg onClick={openImgFile}>
+            {!isEditable &&
+              <upc.EditImg
+                onClick={openImgFile}
+              >
                 {/* 안보이게 할 input btn */}
-                <input
-                  type='file'
-                  accept='image/*'
-                  onChange={onSelectFile}
-                  ref={imageInputRef}
-                  hidden
-                />
+                <input type="file" accept="image/*" onChange={onSelectFile} ref={imageInputRef} hidden />
                 <BsFillImageFill
                   size={50}
                   color='#fff'
                   onClick={handleOpenCropImage}
                 />
               </upc.EditImg>
-            )}
+            }
+
           </upc.ImgCtnr>
 
           {/* 유저 정보 컨테이너 (form) */}
@@ -153,11 +147,15 @@ const UserProfile: React.FC = () => {
                 onChange={(e: any) => handleInfoChange(e, 'id')}
                 readOnly={isEditable}
               ></upc.IdText>
-              {isEditable ? (
-                <AiFillEdit onClick={handleEditUserInfo} />
-              ) : (
-                <AiFillCheckCircle onClick={handleEditUserInfo} />
-              )}
+              {isEditable ?
+                <AiFillEdit
+                  onClick={handleEditUserInfo}
+                />
+                :
+                <AiFillCheckCircle
+                  onClick={handleEditUserInfo}
+                />
+              }
             </upc.IdCtnr>
 
             <upc.EmailCtnr>
@@ -180,6 +178,7 @@ const UserProfile: React.FC = () => {
           <div>친구 목록</div>
           <div>친구 목록</div>
         </upc.ProfileCard>
+
       </gs.MainBox>
     </gs.MainContainer>
   );

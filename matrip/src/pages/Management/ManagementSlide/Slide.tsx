@@ -3,14 +3,14 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
-import * as ss from './SlideStyle';
-import { fdata } from '../../../data/userdata';
+
+import { styled } from 'styled-components';
 // import { Pagination } from 'swiper';
 
 const Slide: React.FC = () => {
   return (
     <>
-      <ss.StyledWrapper>
+      <StyledWrapper>
         <Swiper
           slidesPerView={2}
           centeredSlides={true}
@@ -21,22 +21,38 @@ const Slide: React.FC = () => {
           }}
           className='mySwiper'
         >
-          {fdata.map((x: any) => {
-            return (
-              <SwiperSlide key={x.id}>
-                <ss.SlidefileImgBox>
-                  <ss.SlideImg src={x.imgurl} alt='유저 프로필' />
-                </ss.SlidefileImgBox>
-                <ss.ProFile>
-                  <ss.ProFileNick>{x.nick}</ss.ProFileNick>
-                  <ss.ProFileSex>{x.sex}</ss.ProFileSex>
-                </ss.ProFile>
-              </SwiperSlide>
-            );
-          })}
+          <SwiperSlide></SwiperSlide>
+          <SwiperSlide></SwiperSlide>
+          <SwiperSlide></SwiperSlide>
+          <SwiperSlide></SwiperSlide>
+          <SwiperSlide></SwiperSlide>
+          <SwiperSlide></SwiperSlide>
+          <SwiperSlide></SwiperSlide>
+          <SwiperSlide></SwiperSlide>
+          <SwiperSlide></SwiperSlide>
         </Swiper>
-      </ss.StyledWrapper>
+      </StyledWrapper>
     </>
   );
 };
 export default Slide;
+
+const StyledWrapper = styled.div`
+  padding-top: 25px;
+  margin-bottom: 5px;
+  width: 100%;
+  position: relative;
+
+  .swiper-slide {
+    width: 200px;
+    height: 350px;
+    margin: auto;
+    position: relative;
+    border-radius: 36px;
+    box-shadow: 3px 5px 20px #d4d4d4;
+  }
+
+  .swiper, swiper-container{
+    padding: 20px 0px;
+  }
+`;
