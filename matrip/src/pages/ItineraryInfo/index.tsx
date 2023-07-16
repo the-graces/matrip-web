@@ -1,62 +1,132 @@
-import React from 'react';
-import { MdOutlineMan4 } from 'react-icons/md';
-import { AiOutlineUserAdd } from 'react-icons/ai';
-import './index.scss';
-
+import React, { ChangeEvent, useState } from 'react';
+import { BsImages, BsCalendar } from 'react-icons/bs';
+import { DateRange } from 'react-date-range';
+import { addDays } from 'date-fns';
+import ko from 'date-fns/locale/ko';
+import dayjs from 'dayjs';
 import * as iic from './itineraryInfoStyle';
 import * as gs from '../../styles/GlobalStyles';
+import Header from '../../components/Header';
+import FormInput from '../../components/Form/FormInput';
+import AddMember from '../../components/AddMember';
+import './index.scss';
+import Map from './itineraryComponents/Map';
+import { Link } from 'react-router-dom';
 
 const ItineraryInfo: React.FC = () => {
-  // 조건부 렌더링으로 등록 / 신청 구현
+  const center = { lat: 37.5665, lng: 126.978 };
+  const zoom = 13;
+  // 수정인 경우에는 데이터 가져와서 초기값에 넣어주기
+  const [input, setInput] = useState({
+    title: '',
+    start: dayjs(new Date()).format('YYYY.MM.DD'),
+    end: dayjs(addDays(new Date(), 1)).format('YYYY.MM.DD'),
+    introduction: '',
+    location: '',
+    imgUrl: ''
+  });
+
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setInput((prevState) => ({ ...prevState, [name]: value }));
+  };
+
+  // 날짜
+  const [datePicker, setDatePicker] = useState<boolean>(false);
+  const [dateRange, setDateRange] = useState([
+    {
+      startDate: new Date(),
+      endDate: addDays(new Date(), 1),
+      key: 'selection'
+    }
+  ]);
+
+  const handleRangeChange = (ranges: any) => {
+    setDateRange([ranges.selection]);
+  };
+
+  const formatSelectedDate = () => {
+    const { startDate, endDate } = dateRange[0];
+
+    if (startDate && endDate) {
+      const formattedStartDate = dayjs(startDate).format('YYYY.MM.DD');
+      const formattedEndDate = dayjs(endDate).format('YYYY.MM.DD');
+
+      setInput({
+        ...input,
+        ['start']: formattedStartDate,
+        ['end']: formattedEndDate
+      });
+    }
+  };
+
+  const handleCalendarClick = () => {
+    setDatePicker(!datePicker);
+    formatSelectedDate();
+  };
 
   return (
     <gs.MainContainer>
+      <Header edit={true} />
       <gs.MainBox>
-        itineraryInfoPage
-        <iic.InfoCtnr>
-          <iic.LabelText>기간</iic.LabelText>
-          <iic.TimePickerCtnr>
-            <iic.TimePicker>2023.07.07 19:00</iic.TimePicker>
-            <iic.TimePicker>2023.07.09 09:00</iic.TimePicker>
-          </iic.TimePickerCtnr>
-        </iic.InfoCtnr>
-        <iic.InfoCtnr>
-          <iic.LabelText>위치</iic.LabelText>
-          <iic.LocationPickerCtnr>
-            <iic.LocationPicker>강원도 강릉시 강릉시 옥천동</iic.LocationPicker>
-          </iic.LocationPickerCtnr>
-        </iic.InfoCtnr>
-        <iic.InfoCtnr>
-          <iic.LabelText>오픈채팅 링크</iic.LabelText>
-          <iic.ChatLinkCtnr>
-            <iic.ChatLink>
-              <a href='https://velog.io'>https://velog.io</a>
-            </iic.ChatLink>
-          </iic.ChatLinkCtnr>
-        </iic.InfoCtnr>
-        <iic.InfoCtnr>
-          <iic.LabelText>소개</iic.LabelText>
-          <iic.IntroduceItineraryCtnr>
-            <iic.IntroduceItinerary>
-              안녕하세요?안녕하세요?안녕하세요?안녕하세요?안녕하세요?안녕하세요?안녕하세요?안녕하세요?안녕하세요?안녕하세요?안녕하세요?안녕하세요?안녕하세요?안녕하세요?안녕하세요?
-            </iic.IntroduceItinerary>
-          </iic.IntroduceItineraryCtnr>
-        </iic.InfoCtnr>
-        <iic.InfoCtnr>
-          <iic.LabelText>동행</iic.LabelText>
-          <iic.CompanionCtnr>
-            <iic.CompanionMember>
-              <MdOutlineMan4 className='companionIcon' />
-            </iic.CompanionMember>
-            <iic.CompanionMember>
-              <MdOutlineMan4 className='companionIcon' />
-            </iic.CompanionMember>
-            <iic.CompanionAdd>
-              <AiOutlineUserAdd className='companionIcon' />
-            </iic.CompanionAdd>
-          </iic.CompanionCtnr>
-        </iic.InfoCtnr>
-        <iic.RegisterSubmitBtn>등록</iic.RegisterSubmitBtn>
+        <Link to={'/mapSearch'} style={{ width: '100%' }}>
+          <Map center={center} zoom={zoom} />
+        </Link>
+        <iic.FormBox>
+          <iic.InputWrap className='imgWrap'>
+            <iic.InputLabel>
+              <div>대표 이미지</div>
+              <iic.InputBtn type='button'>
+                <BsImages size='20' color='#9c9c9c' />
+              </iic.InputBtn>
+            </iic.InputLabel>
+          </iic.InputWrap>
+
+          <iic.InputWrap>
+            <iic.InputLabel>제목</iic.InputLabel>
+            <FormInput
+              name='title'
+              value={input.title}
+              onChange={handleInputChange}
+            />
+          </iic.InputWrap>
+
+          <iic.InputWrap className='imgWrap'>
+            <iic.InputLabel>
+              <div>날짜</div>
+              <iic.InputBtn type='button' onClick={handleCalendarClick}>
+                <BsCalendar size='20' color='#9c9c9c' />
+              </iic.InputBtn>
+            </iic.InputLabel>
+            {datePicker && (
+              <DateRange
+                locale={ko}
+                editableDateInputs={true}
+                onChange={handleRangeChange}
+                moveRangeOnFirstSelection={false}
+                ranges={dateRange}
+                dateDisplayFormat={'yyyy.MM.dd'}
+                months={2}
+                direction='horizontal'
+              />
+            )}
+            {input.start} ~ {input.end}
+          </iic.InputWrap>
+
+          <iic.InputWrap>
+            <iic.InputLabel>소개</iic.InputLabel>
+            <FormInput
+              name='introduction'
+              value={input.introduction}
+              onChange={handleInputChange}
+            />
+          </iic.InputWrap>
+
+          <iic.InputWrap>
+            <iic.InputLabel>일행 추가</iic.InputLabel>
+            <AddMember />
+          </iic.InputWrap>
+        </iic.FormBox>
       </gs.MainBox>
     </gs.MainContainer>
   );

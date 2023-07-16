@@ -23,6 +23,8 @@ const getTitle = (location: string) => {
     title = '로그인';
   } else if (location === 'signup') {
     title = '회원가입';
+  } else if (location.includes('itinerary')) {
+    title = '여정';
   } else {
     title = '';
   }
