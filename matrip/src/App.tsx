@@ -15,6 +15,7 @@ import Management from './pages/Management';
 import Login from './pages/Login';
 import MemberDetail from './pages/MemberDetail';
 import ItinerarySearch from './pages/ItinerarySearch';
+import Signup from './pages/Signup';
 
 import GlobalFonts from './styles/fonts';
 import { GlobalStyle } from './styles/GlobalStyles';
@@ -28,10 +29,10 @@ function App() {
       <GlobalStyle theme={lightTheme} />
       <BottomNav />
       <Routes>
+        <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<Signup />} />
         <Route path='/ItinerarySearch' element={<ItinerarySearch />} />
-        <Route path='/' element={<Main />} />
-        <Route path='/login' element={<Login />} />
         <Route path='/memberSearch' element={<MemberSearch />} />
         <Route path='/member' element={<MemberDetail />} />
         <Route path='/itineraryInfo' element={<ItineraryInfo />} />

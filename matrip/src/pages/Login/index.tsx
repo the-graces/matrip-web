@@ -3,8 +3,7 @@ import { IoIosArrowForward } from 'react-icons/io';
 import * as gs from '../../styles/GlobalStyles';
 import * as ls from './loginStyle';
 import Header from '../../components/Header';
-import FormSubmitBtn from '../../components/Form/FormSubmitBtn';
-import FormInput from '../../components/Form/FormInput';
+import FormInput from '../../components/FormInput';
 import naverLogo from '../../asset/naver.png';
 import kakaoLogo from '../../asset/kakao.jpg';
 
@@ -55,7 +54,7 @@ function Login() {
             </div>
           </ls.OptionBox>
           <div>
-            <FormSubmitBtn text='로그인' />
+            <ls.SubmitBtn>로그인</ls.SubmitBtn>
           </div>
         </ls.LoginForm>
         <ls.Or>또는</ls.Or>

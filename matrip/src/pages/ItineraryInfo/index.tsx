@@ -7,7 +7,7 @@ import dayjs from 'dayjs';
 import * as iic from './itineraryInfoStyle';
 import * as gs from '../../styles/GlobalStyles';
 import Header from '../../components/Header';
-import FormInput from '../../components/Form/FormInput';
+import FormInput from '../../components/FormInput';
 import AddMember from '../../components/AddMember';
 import './index.scss';
 import Map from './itineraryComponents/Map';
